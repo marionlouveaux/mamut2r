@@ -1,0 +1,38 @@
+---
+title: "Vignette MaMuT2R"
+author: "Marion Louveaux"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, echo=FALSE}
+library(MaMuT2R)
+```
+
+
+## Load .xml MaMuT file
+
+```{r, echo=FALSE}
+XML_dir <- "/Users/mlouveaux/Documents/Postdoc/Projects/Nuclei_segmentation/2017-05-29_MaMuT_H5"
+XML_file <- "2017-02-23_16.59.21_stPVB003-2-2xDR5v2_test_cropped_dc_export-mamut.xml"
+MaMuTpath <- paste0(XML_dir, "/", XML_file)
+MaMuT_XML <- readMaMuT(MaMuTpath)
+```
+
+
+## Get information relative to either nuclei (= spots) or lineages (=tracks)
+
+MaMuT .xml file stores two type of objects, under two types of tags: the spots and the tracks. In the case of a biological sample, spots usually refer to nuclei and tracks to lineages. Here, Spots.as.dataframe() and Tracks.as.dataframe() extract information from .xml file and format them as dataframes.
+
+```{r, echo=FALSE}
+Spots_df <- Spots.as.dataframe(MaMuT_XML)
+Tracks_df <- Tracks.as.dataframe(MaMuT_XML)
+```
+
+
+
