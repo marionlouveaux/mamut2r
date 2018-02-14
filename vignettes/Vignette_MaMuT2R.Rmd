@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -33,6 +35,98 @@ MaMuT .xml file stores two type of objects, under two types of tags: the spots a
 Spots_df <- Spots.as.dataframe(MaMuT_XML)
 Tracks_df <- Tracks.as.dataframe(MaMuT_XML)
 ```
+
+
+## Make a plotly graph
+
+### Single timepoint
+
+```{r}
+library(plotly)
+library(magrittr)
+
+p <- plot_ly(dplyr::filter(Spots_df, FRAME == 0), x = ~POSITION_X, y = ~POSITION_Y, z = ~POSITION_Z) %>%
+  add_markers() %>%
+  layout(scene = list(xaxis = list(title = 'X'),
+                     yaxis = list(title = 'Y', scaleanchor = "x"),
+                     zaxis = list(title = 'Z', scaleratio = 0.65)))
+
+p
+```
+
+
+Alternatively you can also you add_trace()
+```{r}
+df_tmp <- dplyr::filter(Spots_df, FRAME == "0")
+my.trace <- list(type = "scatter3d",
+                x = dplyr::select(df_tmp, POSITION_X),
+                y = dplyr::select(df_tmp, POSITION_Y),
+                z = dplyr::select(df_tmp, POSITION_Z),
+               visible = FALSE)
+p <- plot_ly()
+p <- add_trace(p, 
+               x = ~ as.numeric(unlist(my.trace$x)),
+               y = ~ as.numeric(unlist(my.trace$y)),
+               z = ~ as.numeric(unlist(my.trace$z)),
+               visible = TRUE,
+               type = my.trace$type,
+               mode = "markers")
+p <-  layout(p, scene = list(xaxis = list(title = 'X'),
+                     yaxis = list(title = 'Y'),
+                     zaxis = list(title = 'Z')))
+p
+```
+
+
+### All timepoints
+
+```{r}
+
+all.trace <- apply(t(unique(Spots_df$FRAME)), 2, function(t){
+  df_tmp <- dplyr::filter(Spots_df, FRAME == t)
+trace2 <- list(type="scatter3d",
+                x = dplyr::select(df_tmp, POSITION_X),
+                y = dplyr::select(df_tmp, POSITION_Y),
+                z = dplyr::select(df_tmp, POSITION_Z),
+               visible = FALSE,
+               frame = t,
+               color = rep(1, nrow(df_tmp)))
+})
+
+p <- plot_ly()
+steps <- list()
+for (t in 1:length(unique(Spots_df$FRAME))){
+  p <- add_trace(p, 
+               x = ~ as.numeric(unlist(all.trace[[t]]$x)),
+               y = ~ as.numeric(unlist(all.trace[[t]]$y)),
+               z = ~ as.numeric(unlist(all.trace[[t]]$z)),
+               visible = TRUE,
+               type = "scatter3d",
+               mode = "markers",
+               color = ~ as.factor(all.trace[[t]]$color),
+               colors = c("#BF382A", "#0C4B8E", "#BF382A")
+               ) %>%
+  layout(scene = list(xaxis = list(title = 'X'),
+                     yaxis = list(title = 'Y', scaleanchor = "x"),
+                     zaxis = list(title = 'Z', scaleratio = 0.65)))
+
+  step <- list(args = list('visible', rep(FALSE, length(unique(Spots_df$FRAME)))),
+               method = 'restyle')
+  step$args[[2]][t] = TRUE  
+  steps[[t]] = step 
+}
+
+p <- p %>%
+  layout(sliders = list(list(active = 3,
+                             currentvalue = list(prefix = "Frame: "),
+                             steps = steps)))
+p
+
+```
+
+
+
+
 
 
 
