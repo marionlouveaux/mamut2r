@@ -14,6 +14,9 @@ editor_options:
 
 ```{r, echo=FALSE}
 library(MaMuT2R)
+library(plotly)
+library(magrittr)
+library(alphashape3d)
 ```
 
 
@@ -42,8 +45,6 @@ Tracks_df <- Tracks.as.dataframe(MaMuT_XML)
 ### Single timepoint
 
 ```{r}
-library(plotly)
-library(magrittr)
 
 p <- plot_ly(dplyr::filter(Spots_df, FRAME == 0), x = ~POSITION_X, y = ~POSITION_Y, z = ~POSITION_Z) %>%
   add_markers() %>%
@@ -125,8 +126,33 @@ p
 ```
 
 
+## Transform a set of MaMut points into a mesh for export to MGX
 
 
+```{r}
+# for a given frame
+
+Spots_df_frame <- dplyr::filter(Spots_df, FRAME == 0)
+
+meshList <- list()
+for (m in 1:nrow(Spots_df_frame)){ #
+  mesh_tmp <- spot2mesh(radius = as.numeric(Spots_df_frame[m, "RADIUS"]),
+            f = 0,
+            xm = as.numeric(Spots_df_frame[m, "POSITION_X"]),
+            ym = as.numeric(Spots_df_frame[m, "POSITION_Y"]),
+            zm = as.numeric(Spots_df_frame[m, "POSITION_Z"]) 
+            )
+  meshList[[m]] <- mesh_tmp 
+}
+
+allMeshes <- meshComb(meshList = meshList)
+
+
+test <- MorphoGraphX2R::mesh3D2ply_clust(mesh = allMeshes,
+                             filename = "my_ply_from_my_meshClean_primordia.ply",
+                             label_it_for_mesh = allMeshes$label_it)
+## Problem of normal orientation: look at the vignette MaMuTvs3Dsuite line 650 to correct allMeshes before writing to ply
+```
 
 
 
