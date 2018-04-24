@@ -2,4 +2,3 @@
 
 export(Spots.as.dataframe)
 export(Tracks.as.dataframe)
-export(readMaMuT)

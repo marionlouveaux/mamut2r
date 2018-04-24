@@ -1,0 +1,70 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+XML_dir_Marv <- "/Users/mlouveaux/root/home/marion/Marion_backup/2017-08-02_17.49.34_stPVB003-2-2xDR5v2_F3_nb25_Marvelous/BDV"
+XML_file_Marv <- "2017-08-02_17.49.34_stPVB003-2-2xDR5v2_F3_nb25_Marvelous_fused_cropped_export-mamut.xml"
+
+MaMuTpath_Marv <- paste0(XML_dir_Marv, "/", XML_file_Marv)
+MaMuT_XML_Marv <- readMaMuT(MaMuTpath_Marv)
+
+
+
+XML_dir_niiice <- "/Users/mlouveaux/root/home/marion/Marion_backup/2017-09-02_18.43.17_stPVB003-2-2xDR5v2_F3_nb25_niice/BDV"
+XML_file_niiice <- "2017-09-02_18_43_17_stPVB003-2-2xDR5v2_F3_nb25_fused_cropped_export-mamut.xml"
+
+MaMuTpath_niiice <- paste0(XML_dir_niiice, "/", XML_file_niiice)
+MaMuT_XML_niiice <- readMaMuT(MaMuTpath_niiice)
+
+```
+
+```{r}
+Spots_df_Marv <- Spots.as.dataframe(MaMuT_XML_Marv)
+Tracks_df_Marv <- Tracks.as.dataframe(MaMuT_XML_Marv)
+
+Spots_df_niiice <- Spots.as.dataframe(MaMuT_XML_niiice)
+Tracks_df_niiice <- Tracks.as.dataframe(MaMuT_XML_niiice)
+```
+
+
+## Number of nuclei
+
+```{r}
+
+nbNucl_Marv <- Spots_df_Marv %>% 
+  group_by(FRAME) %>% 
+  summarise(n = n()) %>%
+  mutate(FRAME = as.numeric(FRAME))  %>%
+  arrange(FRAME) %>%
+  mutate(name = "Marv")
+
+ggplot(nbNucl_Marv, aes(x = FRAME, y = n)) + geom_point()
+
+
+nbNucl_niiice <- Spots_df_niiice %>% 
+  group_by(FRAME) %>% 
+  summarise(n = n()) %>%
+  mutate(FRAME = as.numeric(FRAME))  %>%
+  arrange(FRAME) %>%
+  mutate(name = "niiice")
+  
+
+ggplot(nbNucl_niiice, aes(x = FRAME, y = n)) + geom_point()
+
+both_movies <- dplyr::bind_rows(nbNucl_Marv, nbNucl_niiice)
+
+ggplot(both_movies, aes(x = FRAME, y = n, colour = name)) + 
+  geom_point() +
+  geom_line()
+View(both_movies)
+```
+
+

@@ -11,22 +11,17 @@ editor_options:
   chunk_output_type: console
 ---
 
-
 ```{r, echo=FALSE}
 library(MaMuT2R)
-library(plotly)
-library(magrittr)
-library(alphashape3d)
 ```
 
 
 ## Load .xml MaMuT file
 
 ```{r, echo=FALSE}
-XML_dir <- "/Users/mlouveaux/Documents/Postdoc/Projects/Nuclei_segmentation/2017-05-29_MaMuT_H5"
-XML_file <- "2017-02-23_16.59.21_stPVB003-2-2xDR5v2_test_cropped_dc_export-mamut.xml"
-MaMuTpath <- paste0(XML_dir, "/", XML_file)
-MaMuT_XML <- readMaMuT(MaMuTpath)
+MaMuTpath <- "/Users/mlouveaux/Documents/Postdoc/Softwares/Fiji/Test_plugins/2017-04-26_MaMuT/MaMuT_Parhyale_demo-mamut.xml"
+
+MaMuT_XML <- XML::xmlToList(MaMuTpath)
 ```
 
 
@@ -40,119 +35,8 @@ Tracks_df <- Tracks.as.dataframe(MaMuT_XML)
 ```
 
 
-## Make a plotly graph
-
-### Single timepoint
-
-```{r}
-
-p <- plot_ly(dplyr::filter(Spots_df, FRAME == 0), x = ~POSITION_X, y = ~POSITION_Y, z = ~POSITION_Z) %>%
-  add_markers() %>%
-  layout(scene = list(xaxis = list(title = 'X'),
-                     yaxis = list(title = 'Y', scaleanchor = "x"),
-                     zaxis = list(title = 'Z', scaleratio = 0.65)))
-
-p
-```
 
 
-Alternatively you can also you add_trace()
-```{r}
-df_tmp <- dplyr::filter(Spots_df, FRAME == "0")
-my.trace <- list(type = "scatter3d",
-                x = dplyr::select(df_tmp, POSITION_X),
-                y = dplyr::select(df_tmp, POSITION_Y),
-                z = dplyr::select(df_tmp, POSITION_Z),
-               visible = FALSE)
-p <- plot_ly()
-p <- add_trace(p, 
-               x = ~ as.numeric(unlist(my.trace$x)),
-               y = ~ as.numeric(unlist(my.trace$y)),
-               z = ~ as.numeric(unlist(my.trace$z)),
-               visible = TRUE,
-               type = my.trace$type,
-               mode = "markers")
-p <-  layout(p, scene = list(xaxis = list(title = 'X'),
-                     yaxis = list(title = 'Y'),
-                     zaxis = list(title = 'Z')))
-p
-```
-
-
-### All timepoints
-
-```{r}
-
-all.trace <- apply(t(unique(Spots_df$FRAME)), 2, function(t){
-  df_tmp <- dplyr::filter(Spots_df, FRAME == t)
-trace2 <- list(type="scatter3d",
-                x = dplyr::select(df_tmp, POSITION_X),
-                y = dplyr::select(df_tmp, POSITION_Y),
-                z = dplyr::select(df_tmp, POSITION_Z),
-               visible = FALSE,
-               frame = t,
-               color = rep(1, nrow(df_tmp)))
-})
-
-p <- plot_ly()
-steps <- list()
-for (t in 1:length(unique(Spots_df$FRAME))){
-  p <- add_trace(p, 
-               x = ~ as.numeric(unlist(all.trace[[t]]$x)),
-               y = ~ as.numeric(unlist(all.trace[[t]]$y)),
-               z = ~ as.numeric(unlist(all.trace[[t]]$z)),
-               visible = TRUE,
-               type = "scatter3d",
-               mode = "markers",
-               color = ~ as.factor(all.trace[[t]]$color),
-               colors = c("#BF382A", "#0C4B8E", "#BF382A")
-               ) %>%
-  layout(scene = list(xaxis = list(title = 'X'),
-                     yaxis = list(title = 'Y', scaleanchor = "x"),
-                     zaxis = list(title = 'Z', scaleratio = 0.65)))
-
-  step <- list(args = list('visible', rep(FALSE, length(unique(Spots_df$FRAME)))),
-               method = 'restyle')
-  step$args[[2]][t] = TRUE  
-  steps[[t]] = step 
-}
-
-p <- p %>%
-  layout(sliders = list(list(active = 3,
-                             currentvalue = list(prefix = "Frame: "),
-                             steps = steps)))
-p
-
-```
-
-
-## Transform a set of MaMut points into a mesh for export to MGX
-
-
-```{r}
-# for a given frame
-
-Spots_df_frame <- dplyr::filter(Spots_df, FRAME == 0)
-
-meshList <- list()
-for (m in 1:nrow(Spots_df_frame)){ #
-  mesh_tmp <- spot2mesh(radius = as.numeric(Spots_df_frame[m, "RADIUS"]),
-            f = 0,
-            xm = as.numeric(Spots_df_frame[m, "POSITION_X"]),
-            ym = as.numeric(Spots_df_frame[m, "POSITION_Y"]),
-            zm = as.numeric(Spots_df_frame[m, "POSITION_Z"]) 
-            )
-  meshList[[m]] <- mesh_tmp 
-}
-
-allMeshes <- meshComb(meshList = meshList)
-
-
-test <- MorphoGraphX2R::mesh3D2ply_clust(mesh = allMeshes,
-                             filename = "my_ply_from_my_meshClean_primordia.ply",
-                             label_it_for_mesh = allMeshes$label_it)
-## Problem of normal orientation: look at the vignette MaMuTvs3Dsuite line 650 to correct allMeshes before writing to ply
-```
 
 
 
