@@ -21,7 +21,6 @@ Spots.as.dataframe <- function(MaMuT_XML){
   for (i in id_allspot){
 
     Spots <- AllSpots[[i]]
-    names(Spots)
     id_spot <- which(names(Spots) == "Spot")
 
     for (index in 1:length(id_spot)){
@@ -32,10 +31,6 @@ Spots.as.dataframe <- function(MaMuT_XML){
     for (index in 1:length(id_spot)){
       Spots_df_tmp <- data.frame(dplyr::bind_rows(Spots_df_tmp, Spots[[index]]), stringsAsFactors = FALSE)
     }
-
-    FRAME <- Spots$.attrs
-
-    Spots_df_tmp <- cbind(Spots_df_tmp, data.frame(FRAME, stringsAsFactors = FALSE))
 
     Spots_df <- dplyr::bind_rows(Spots_df, Spots_df_tmp)
   }
