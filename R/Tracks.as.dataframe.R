@@ -34,8 +34,10 @@ Tracks.as.dataframe <- function(MaMuT_XML){
     }
 
     TRACK_NAME <- Tracks$.attrs["name"]
+    TRACK_ID <- Tracks$.attrs["TRACK_ID"]
+    TRACK_INDEX <- Tracks$.attrs["TRACK_INDEX"]
 
-    Tracks_df_tmp <- cbind(Tracks_df_tmp, data.frame(TRACK_NAME, stringsAsFactors = FALSE))
+    Tracks_df_tmp <- cbind(Tracks_df_tmp, data.frame(TRACK_NAME, TRACK_ID, TRACK_INDEX, stringsAsFactors = FALSE), row.names = NULL)
 
     Tracks_df <- dplyr::bind_rows(Tracks_df, Tracks_df_tmp)
   }
