@@ -15,7 +15,7 @@ Spots.as.dataframe <- function(MaMuT_XML){
 
   apply(t(1:length(id_allspot)), 2, function(x){
     paste0(names(AllSpots)[id_allspot[x]], "_", x-1)
-    })
+  })
 
   Spots_df <- NULL
   for (i in id_allspot){
@@ -23,16 +23,18 @@ Spots.as.dataframe <- function(MaMuT_XML){
     Spots <- AllSpots[[i]]
     id_spot <- which(names(Spots) == "Spot")
 
-    for (index in 1:length(id_spot)){
-      names(Spots)[id_spot[index]] <- paste0(names(Spots)[id_spot[index]], "_", index)
-    }
+    if (length(id_spot) !=0 ){ # there can be an entry for a given timepoint but no spots
+      for (index in 1:length(id_spot)){
+        names(Spots)[id_spot[index]] <- paste0(names(Spots)[id_spot[index]], "_", index)
+      }
 
-    Spots_df_tmp <- NULL
-    for (index in 1:length(id_spot)){
-      Spots_df_tmp <- data.frame(dplyr::bind_rows(Spots_df_tmp, Spots[[index]]), stringsAsFactors = FALSE)
-    }
+      Spots_df_tmp <- NULL
+      for (index in 1:length(id_spot)){
+        Spots_df_tmp <- data.frame(dplyr::bind_rows(Spots_df_tmp, Spots[[index]]), stringsAsFactors = FALSE)
+      }
 
-    Spots_df <- dplyr::bind_rows(Spots_df, Spots_df_tmp)
+      Spots_df <- dplyr::bind_rows(Spots_df, Spots_df_tmp)
+    }
   }
-return(Spots_df)
+  return(Spots_df)
 }
