@@ -9,4 +9,6 @@ MaMuT2R read .xml files created with the MaMuT Fiji plugin and returns two dataf
 
 ## Functions
 
-readMaMuT(): This function is a wrapper around xmlToList function to read xml files from MaMuT plugin.
+Spots.as.dataframe() extracts the informations concerning spots in Fiji MaMuT .xml files.
+
+Tracks.as.dataframe() extracts the informations concerning tracks in Fiji MaMuT .xml files.
