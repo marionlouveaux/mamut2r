@@ -20,17 +20,26 @@ library(ggplot2)
 library(cowplot)
 library(glue)
 library(plotly)
+library(purrr)
+library(tibble)
+library(XML)
 ```
 
 
 ## Load .xml MaMuT file
 
 ```{r, echo=FALSE}
-MaMuTpath <- "/Users/mlouveaux/Documents/Postdoc/Softwares/Fiji/Test_plugins/2017-04-26_MaMuT/MaMuT_Parhyale_demo-mamut.xml"
+# MaMuTpath <- "/Users/mlouveaux/Documents/Postdoc/Softwares/Fiji/Test_plugins/2017-04-26_MaMuT/MaMuT_Parhyale_demo-mamut.xml"
+# 
 
-MaMuT_XML <- XML::xmlToList(MaMuTpath)
+dir <- "/Users/mlouveaux/Documents/Postdoc/Projects/Nuclei_segmentation/2017-05-29_MaMuT_H5"
+MaMuT_file <- "2017-02-23_16.59.21_stPVB003-2-2xDR5v2_test_cropped_dc_export-mamut.xml"
+H5_file <- "2017-02-23_16.59.21_stPVB003-2-2xDR5v2_test_cropped_dc_export.h5"
+
+MaMuTpath <- file.path(dir, MaMuT_file)
+
+MaMuT_XML <- xmlToList(MaMuTpath)
 ```
-
 
 ## Get information relative to either nuclei (= spots) or lineages (=tracks)
 
@@ -39,259 +48,228 @@ MaMuT .xml file stores two type of objects, under two types of tags: the spots a
 ```{r, echo=FALSE}
 Spots_df <- Spots.as.dataframe(MaMuT_XML)
 
-Tracks_df <- Tracks.as.dataframe(MaMuT_XML) #should also retrieve the Track ID & track index
+Tracks_df <- Tracks.as.dataframe(MaMuT_XML)
 ```
 
 ```{r}
-
 Spots_df <- Spots_df %>% 
   as_tibble() %>% 
   mutate(MANUAL_COLOR = -65536)
 ```
 
 
-## Lineage tree
 
-```{r}
-Spots_df_tracks <- Spots_df %>% 
-left_join(
-  Tracks_df %>% 
-  select(SPOT_SOURCE_ID, TRACK_NAME) %>% 
-    distinct(),
-          by = c("ID" = "SPOT_SOURCE_ID")) %>%
-  left_join(
-    Tracks_df %>% 
-    select(SPOT_TARGET_ID, TRACK_NAME) %>% 
-      distinct(),
-          by = c("ID" = "SPOT_TARGET_ID")) %>%
-  mutate(TRACK_NAME = ifelse(is.na(TRACK_NAME.y), TRACK_NAME.x, TRACK_NAME.y)) %>%
-  select(-starts_with("TRACK_NAME.")) %>%
-  mutate(x1 = x, y1=y, z1=z) %>%
-  select(-x,-y,-z)
-```
-
-```{r}
-## with ggraph
-
-#' @param x integer
-int2hours <- function(x) {
-  Hours <- formatC(floor(x), width = 2, flag = "0")
-  Minutes <- formatC( (x - floor(x))*60, width = 2, flag = "0")
-  glue(Hours, ":", Minutes)
-}
-
-#' @param track track name
-#' @param Tracks_df Tracks_df
-#' @param Spots_df_tracks Spots_df with Track name
-track2plot <- function(track, Tracks_df, Spots_df_tracks, colNode, colYaxis) {
-
-  colNode <- enquo(colNode)
-  Track_graph <- graph_from_data_frame(
-    filter(Tracks_df, TRACK_NAME == track),
-  directed = TRUE,
-  vertices = filter(Spots_df_tracks, TRACK_NAME == track))
-
-track_layout <- create_layout(Track_graph, 'dendrogram')
-
-timeLab <- rev(purrr::map_chr(.x = as.numeric(as.character(unique(track_layout$FRAME)))/2, .f = int2hours))
-
-g <- ggplot(track_layout) +
-  geom_edge_link(aes(x, y)) +
-  geom_node_point(aes(x, y, colour=(!!colNode) ))  + 
-  facet_wrap(~TRACK_NAME) +
-  ylab("Time (in hours)") +
-  theme(
-      axis.text.x=element_blank(),
-      axis.ticks.x=element_blank(),
-      axis.title.x=element_blank(),
-      axis.line.x=element_blank(),
-      axis.line.y=element_line(colour = colYaxis),
-      axis.ticks.y=element_line(colour = colYaxis),
-      axis.text.y=element_text(colour=colYaxis),
-      axis.title.y=element_text(colour=colYaxis)
-      )+
-   theme(legend.position = "none")  +
-  scale_y_continuous(breaks = seq(1, length(timeLab), 2), # displays only a few ticks - only valid for continuous vars
-                     labels = timeLab[seq(1, length(timeLab), 2)+1]
-                     ) +
-  scale_color_viridis()
-return(g)
-}
-
-all_tracks <- unique(Tracks_df$TRACK_NAME)
-
-#display y axis only for plots on the left
-colYaxis <- c("black", "white", "white", "black", "white", "white")
-
-# all_layouts <- purrr::map2(all_tracks, colYaxis,
-#                           ~track2plot(.x, Tracks_df, Spots_df_tracks, colNode = FRAME, colYaxis = .y))
-
-
-all_layouts <- purrr::map2(all_tracks, colYaxis,
-                          ~track2plot(.x, Tracks_df, all_data, colNode = fluoMean, colYaxis = .y)) #all_data contains fluo values
-
-prow <- cowplot::plot_grid(plotlist = all_layouts)
-legend <- get_legend(all_layouts[[1]]+theme(legend.position="right"))
-p <- plot_grid( prow, legend, rel_widths = c(3, .3))
-
-x11()
-p
-```
+**OR**
 
 ```{r}
 #movie data
-movAnalysis <- "/Users/mlouveaux/Documents/Postdoc/Projects/Nuclei_segmentation/2017-05-29_MaMuT_H5/MaMuTvsHDF5/2018-05-03_analysis_4_WT_movies"
-load(file = file.path(movAnalysis, "Tracks_df_bioutifoul.RData"))
-load(file = file.path(movAnalysis, "Spots_df_bioutifoul.RData"))
-load(file = file.path(movAnalysis, "fluo_all_cells_bioutifoul_5px.Rdata"))
+# movAnalysis <- "/Users/mlouveaux/Documents/Postdoc/Projects/Nuclei_segmentation/2017-05-29_MaMuT_H5/MaMuTvsHDF5/2018-05-03_analysis_4_WT_movies"
+# 
+# load(file = file.path(movAnalysis, "Spots_df_Marvelous.RData")) ## redo spots and tracks as data format was changed
+# load(file = file.path(movAnalysis, "Tracks_df_Marvelous.RData"))
+# load(file = file.path(movAnalysis, "fluo_all_cells_Marvelous_5px.Rdata"))
+# 
+# 
+# #copied from MaMuTvsHDF5
+# meanFluo <- lapply(all_cells, function(x){
+#   oneFrame <- lapply(x, function(y){
+#     data.frame(frame = as.character(y[[1]]),
+#                name = y[[2]],
+#                fluoMean = mean(y[[3]]) ) # mean fluo value
+#   })
+#   do.call(rbind.data.frame, oneFrame)
+# })
+# 
+# df_meanFluo <- do.call(rbind.data.frame, meanFluo)
+
+# all_data <- dplyr::left_join(x = Spots_Tracks, y = df_meanFluo)
+```
 
 
-#copied from MaMuTvsHDF5
-meanFluo <- lapply(all_cells, function(x){
-  oneFrame <- lapply(x, function(y){
-    data.frame(frame = as.character(y[[1]]),
-               name = y[[2]],
-               fluoMean = mean(y[[3]]) ) # mean fluo value
-  })
-  do.call(rbind.data.frame, oneFrame)
-})
+## Checking tracks
+Spots source and target in MaMuT might be inverted. checkTrack() checks orientation of edges to always have spot source in an earlier timepoint than spot targets. This is very important for plotting the lineage trees afterwards.
 
-df_meanFluo <- do.call(rbind.data.frame, meanFluo)
-all_data <- dplyr::left_join(x = Spots_df_tracks, y = df_meanFluo)
+```{r}
+Tracks_df <- checkTrack(Tracks_df, Spots_df)
+```
 
-x11()
-track2plot(track = "Track_1", Tracks_df, all_data, colNode = fluoMean, colYaxis = "black")
+## Merging spots and tracks information
+Spots dataframe can be enriched with the informations coming from the tracks using spots.and.tracks.
+
+```{r}
+Spots_Tracks <- spots.and.tracks(Spots_df, Tracks_df)
+```
+
+## Lineage tree
+track2plot allows to plot the lineage trees with a custom color code.
+```{r}
+
+all_tracks <- unique(Tracks_df$TRACK_ID)
+
+#display y axis only for plots on the left
+nbcols <- 4 # problem: nbcols does not modify the nb of trees per line
+colYaxis_pattern <- rep(c("black", "white", "white"), ceiling(length(all_tracks)/nbcols))
+colYaxis <- colYaxis_pattern[1:length(all_tracks)]
+##
 
 
+####One track####
+
+# track2plot(track = all_tracks[[6]], Tracks_df, Spots_Tracks,
+           # colNode = FRAME, colYaxis = colYaxis[[6]], colNode_discrete = TRUE)
+
+#or
+# track2plot(track = "1", Tracks_df, all_data, colNode = fluoMean, colYaxis = "black", colNode_discrete = FALSE)
+
+####All tracks####
+
+all_layouts <- map2(all_tracks, colYaxis,
+                           ~track2plot(.x, Tracks_df, Spots_Tracks, colNode = FRAME, colYaxis = .y, colNode_discrete=TRUE))
+
+#or, with continuous color:
+# all_layouts <- map2(all_tracks, colYaxis,
+#                           ~track2plot(.x, Tracks_df, all_data, colNode = fluoMean, colYaxis = .y, colNode_discrete = FALSE)) #all_data contains fluo values
+
+prow <- plot_grid(plotlist = all_layouts)
+legend <- get_legend(all_layouts[[1]]+theme(legend.position="right"))
+p <- plot_grid( prow, legend)#rel_widths = c(3, .3))
+
+# x11()
+# p
+# 
+# png("test.png", width = 1000, height = 800)
+# p
+# dev.off()
 ```
 
 
 
+
 ```{r}
-##With plotly
-plotTrack <- function(Tracks_df, TrackID, Spots_df_tracks) {
-
-Track_graph <- graph_from_data_frame(
-    filter(Tracks_df, TRACK_NAME == TrackID),
-  directed = TRUE,
-  vertices = filter(Spots_df_tracks, TRACK_NAME == TrackID)) #NB name of vertices inherited from the vertices dataframe
-coords <- select(create_layout(Track_graph, 'dendrogram'),x,y)
-
-
-G <- Track_graph
-vName <- data.frame(name = get.vertex.attribute(G)$name)
-coords <- mutate(coords, name = rownames(coords))
-L <- left_join(vName, coords)
-
-vs <- V(G)
-es <- as.data.frame(get.edgelist(G))
-
-Nv <- length(vs)
-Ne <- length(es[1]$V1)
-
-network <- plot_ly(x = ~L$x, y = ~L$y,
-                   mode = "markers",
-                   text = vs$name,
-                   hoverinfo = "text",
-                   marker=list(size=20 , opacity=0.5),
-                   color=~get.vertex.attribute(G)$fluoMean,
-                   colors = viridis::viridis_pal()(6)
-                   )
-
-edge_shapes <- list()
-for(i in 1:Ne) {
-  v0 <- es[i,]$V1
-  v1 <- es[i,]$V2
-
-  edge_shape = list(
-    type = "line",
-    line = list(color = "#030303", width = 0.3),
-    x0 = filter(L, name == v0)$x,
-    y0 = filter(L, name == v0)$y,
-    x1 = filter(L, name == v1)$x,
-    y1 = filter(L, name == v1)$y
-  )
-
-  edge_shapes[[i]] <- edge_shape
-}
-
-xaxis <- list(title = "", showgrid = FALSE, showticklabels = FALSE, zeroline = FALSE)
-
-timeLab <- rev(purrr::map_chr(.x = as.numeric(as.character(unique(get.vertex.attribute(G)$FRAME)))/2, .f = int2hours))
-yaxis <- list(title = "Time (in hours)", showline = TRUE, showticklabels = TRUE, zeroline = FALSE,
-             tickvals = seq(1,length(timeLab),2),
-                    ticktext = timeLab[seq(1,length(timeLab),2)+1]
-                    )
-
-network <- network %>%
-  layout(
-  title = TrackID,
-  shapes = edge_shapes,
-  xaxis = xaxis,
-  yaxis = yaxis
-)
-
-return(network)
-}
-
-# One track
-TrackID <- "Track_1"
-plotTrack(Tracks_df = Tracks_df, TrackID = TrackID, Spots_df_tracks = all_data)
-
-# Several tracks ----- Issue to display the tracks correctly the layout are all superposed
-plotList <- purrr::map(.x=unique(Tracks_df$TRACK_NAME), ~plotTrack(Tracks_df = Tracks_df, TrackID = .x))
-
-subplot(plotList[[1]], plotList[[2]], plotList[[3]], plotList[[4]], shareX = FALSE, shareY = TRUE, nrows = 1)
-
-subplot(plotList, shareX = FALSE, shareY = TRUE, nrows = 2)
+# ##With plotly
+# plotTrack <- function(Tracks_df, TrackID, Spots_Tracks) {
+# 
+# Track_graph <- graph_from_data_frame(
+#     filter(Tracks_df, TRACK_NAME == TrackID),
+#   directed = TRUE,
+#   vertices = filter(Spots_Tracks, TRACK_NAME == TrackID)) #NB name of vertices inherited from the vertices dataframe
+# coords <- select(create_layout(Track_graph, 'dendrogram'),x,y)
+# 
+# 
+# G <- Track_graph
+# vName <- data.frame(name = get.vertex.attribute(G)$name)
+# coords <- mutate(coords, name = rownames(coords))
+# L <- left_join(vName, coords)
+# 
+# vs <- V(G)
+# es <- as.data.frame(get.edgelist(G))
+# 
+# Nv <- length(vs)
+# Ne <- length(es[1]$V1)
+# 
+# network <- plot_ly(x = ~L$x, y = ~L$y,
+#                    mode = "markers",
+#                    text = vs$name,
+#                    hoverinfo = "text",
+#                    marker=list(size=20 , opacity=0.5),
+#                    color=~get.vertex.attribute(G)$fluoMean,
+#                    colors = viridis::viridis_pal()(6)
+#                    )
+# 
+# edge_shapes <- list()
+# for(i in 1:Ne) {
+#   v0 <- es[i,]$V1
+#   v1 <- es[i,]$V2
+# 
+#   edge_shape = list(
+#     type = "line",
+#     line = list(color = "#030303", width = 0.3),
+#     x0 = filter(L, name == v0)$x,
+#     y0 = filter(L, name == v0)$y,
+#     x1 = filter(L, name == v1)$x,
+#     y1 = filter(L, name == v1)$y
+#   )
+# 
+#   edge_shapes[[i]] <- edge_shape
+# }
+# 
+# xaxis <- list(title = "", showgrid = FALSE, showticklabels = FALSE, zeroline = FALSE)
+# 
+# timeLab <- rev(map_chr(.x = as.numeric(as.character(unique(get.vertex.attribute(G)$FRAME)))/2, .f = int2hours))
+# yaxis <- list(title = "Time (in hours)", showline = TRUE, showticklabels = TRUE, zeroline = FALSE,
+#              tickvals = seq(1,length(timeLab),2),
+#                     ticktext = timeLab[seq(1,length(timeLab),2)+1]
+#                     )
+# 
+# network <- network %>%
+#   layout(
+#   title = TrackID,
+#   shapes = edge_shapes,
+#   xaxis = xaxis,
+#   yaxis = yaxis
+# )
+# 
+# return(network)
+# }
+# 
+# # One track
+# TrackID <- "Track_1"
+# plotTrack(Tracks_df = Tracks_df, TrackID = TrackID, Spots_Tracks = all_data)
+# 
+# # Several tracks ----- Issue to display the tracks correctly the layout are all superposed
+# plotList <- map(.x=unique(Tracks_df$TRACK_NAME), ~plotTrack(Tracks_df = Tracks_df, TrackID = .x))
+# 
+# subplot(plotList[[1]], plotList[[2]], plotList[[3]], plotList[[4]], shareX = FALSE, shareY = TRUE, nrows = 1)
+# 
+# subplot(plotList, shareX = FALSE, shareY = TRUE, nrows = 2)
 
 ```
 
 ```{r}
-# https://stackoverflow.com/questions/45701184/igraph-plotly-creates-random-connections
-G <- upgrade_graph(net)
-L <- layout.circle(G)
-rownames(L) <- get.vertex.attribute(G)$name           #added line (#1 out of 5)
-
-vs <- V(G)
-es <- as.data.frame(get.edgelist(G))
-
-Nv <- length(vs)
-Ne <- length(es[1]$V1)
-
-Xn <- L[,1]
-Yn <- L[,2]
-
-network <- plot_ly(x = ~Xn, y = ~Yn, mode = "markers", text = vs$name, hoverinfo = "text")
-
-edge_shapes <- list()
-for(i in 1:Ne) {
-  v0 <- es[i,]$V1
-  v1 <- es[i,]$V2
-
-  edge_shape = list(
-    type = "line",
-    line = list(color = "#030303", width = 0.3),
-    x0 = L[which(v0==rownames(L)),][1],               #changed line (#2 out of 5)                
-    y0 = L[which(v0==rownames(L)),][2],               #changed line (#3 out of 5)
-    x1 = L[which(v1==rownames(L)),][1],               #changed line (#4 out of 5)
-    y1 = L[which(v1==rownames(L)),][2]                #changed line (#5 out of 5)
-  )
-
-  edge_shapes[[i]] <- edge_shape
-}
-
-axis <- list(title = "", showgrid = FALSE, showticklabels = FALSE, zeroline = FALSE)
-
-p <- layout(
-  network,
-  title = 'Test Network', #Changed the title
-  shapes = edge_shapes,
-  xaxis = axis,
-  yaxis = axis
-)
-
-p
+# # https://stackoverflow.com/questions/45701184/igraph-plotly-creates-random-connections
+# G <- upgrade_graph(net)
+# L <- layout.circle(G)
+# rownames(L) <- get.vertex.attribute(G)$name           #added line (#1 out of 5)
+# 
+# vs <- V(G)
+# es <- as.data.frame(get.edgelist(G))
+# 
+# Nv <- length(vs)
+# Ne <- length(es[1]$V1)
+# 
+# Xn <- L[,1]
+# Yn <- L[,2]
+# 
+# network <- plot_ly(x = ~Xn, y = ~Yn, mode = "markers", text = vs$name, hoverinfo = "text")
+# 
+# edge_shapes <- list()
+# for(i in 1:Ne) {
+#   v0 <- es[i,]$V1
+#   v1 <- es[i,]$V2
+# 
+#   edge_shape = list(
+#     type = "line",
+#     line = list(color = "#030303", width = 0.3),
+#     x0 = L[which(v0==rownames(L)),][1],               #changed line (#2 out of 5)                
+#     y0 = L[which(v0==rownames(L)),][2],               #changed line (#3 out of 5)
+#     x1 = L[which(v1==rownames(L)),][1],               #changed line (#4 out of 5)
+#     y1 = L[which(v1==rownames(L)),][2]                #changed line (#5 out of 5)
+#   )
+# 
+#   edge_shapes[[i]] <- edge_shape
+# }
+# 
+# axis <- list(title = "", showgrid = FALSE, showticklabels = FALSE, zeroline = FALSE)
+# 
+# p <- layout(
+#   network,
+#   title = 'Test Network', #Changed the title
+#   shapes = edge_shapes,
+#   xaxis = axis,
+#   yaxis = axis
+# )
+# 
+# p
 
 ```
 
