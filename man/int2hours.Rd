@@ -11,7 +11,7 @@ int2hours(x)
 \item{x}{integer}
 }
 \value{
-a string
+a string with the hour in digital format (HH:mm)
 }
 \description{
 Convert an integer to hour minutes in digital format
