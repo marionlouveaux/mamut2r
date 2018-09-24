@@ -4,7 +4,7 @@
 #' @param timepoint column of timepoints
 #' @importFrom dplyr enquo
 #' @importFrom dplyr group_by
-#' @importFrom left_join
+#' @importFrom dplyr left_join
 #' @importFrom dplyr summarize
 #'
 #' @return
