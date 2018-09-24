@@ -20,6 +20,7 @@ Imports:
   plotly,
   purrr,
   tibble,
+  viridis,
   XML
 Suggests: knitr,
     rmarkdown
