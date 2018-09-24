@@ -8,10 +8,18 @@ Description: MaMuT2R imports data coming from .xml files generated with the Fiji
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.3.2)
 RoxygenNote: 6.0.1
 Imports:
+  cowplot,
   dplyr,
+  igraph,
+  ggplot2,
+  glue,
+  ggraph,
+  magrittr,
+  plotly,
+  purrr,
+  tibble,
   XML
 Suggests: knitr,
     rmarkdown
