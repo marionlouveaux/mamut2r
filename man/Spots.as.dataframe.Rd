@@ -7,16 +7,11 @@
 Spots.as.dataframe(MaMuT_XML)
 }
 \arguments{
-\item{MaMuT_XML}{.xml MaMuT Fiji plugin file converted to list with readMaMuT()}
+\item{MaMuT_XML}{.xml MaMuT Fiji plugin file converted to list with xmlToList() from the XML package}
 }
 \value{
 Dataframe containing the spot ID, its name, its visibility, its radius, quality, source and position (x, y, z, t).
-Spots.as.dataframe()
 }
 \description{
 Convert MaMuT xml Spots tags to a dataframe
 }
-\keyword{3D,}
-\keyword{Fiji,}
-\keyword{MaMuT,}
-\keyword{xml}

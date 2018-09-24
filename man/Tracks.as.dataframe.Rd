@@ -16,7 +16,3 @@ Tracks.as.dataframe()
 \description{
 Convert MaMuT xml Tracks tags to a dataframe
 }
-\keyword{3D,}
-\keyword{Fiji,}
-\keyword{MaMuT,}
-\keyword{xml}
