@@ -1,11 +1,15 @@
 #' Convert MaMuT xml Spots tags to a dataframe
 #'
-#' @param MaMuT_XML .xml MaMuT Fiji plugin file converted to list with readMaMuT()
-#' @keywords Fiji, 3D, MaMuT, xml
+#' @param MaMuT_XML .xml MaMuT Fiji plugin file converted to list with xmlToList() from the XML package
+#' @importFrom dplyr bind_rows
+#' @importFrom dplyr mutate
+#' @importFrom tibble as.tibble
+#'
+#' @keywords
 #' @export
 #' @examples
 #' @return Dataframe containing the spot ID, its name, its visibility, its radius, quality, source and position (x, y, z, t).
-#' Spots.as.dataframe()
+
 
 Spots.as.dataframe <- function(MaMuT_XML){
 
@@ -30,11 +34,20 @@ Spots.as.dataframe <- function(MaMuT_XML){
 
       Spots_df_tmp <- NULL
       for (index in 1:length(id_spot)){
-        Spots_df_tmp <- data.frame(dplyr::bind_rows(Spots_df_tmp, Spots[[index]]), stringsAsFactors = FALSE)
+        Spots_df_tmp <- data.frame(bind_rows(Spots_df_tmp, Spots[[index]]), stringsAsFactors = FALSE)
       }
 
-      Spots_df <- dplyr::bind_rows(Spots_df, Spots_df_tmp)
+      Spots_df_tmp <- Spots_df_tmp %>%
+mutate(ID = as.integer(ID),
+       RADIUS=as.numeric(RADIUS),
+       POSITION_T=as.numeric(POSITION_T),
+       POSITION_X=as.numeric(POSITION_X),
+       POSITION_Y=as.numeric(POSITION_Y),
+       POSITION_Z=as.numeric(POSITION_Z))
+
+      Spots_df <- bind_rows(Spots_df, Spots_df_tmp)
     }
   }
+  Spots_df <- as.tibble(Spots_df)
   return(Spots_df)
 }
