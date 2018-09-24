@@ -1,0 +1,405 @@
+---
+title: "Advanced MaMuT2R vignette - fluorescence"
+author: "Marion Louveaux"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## Librairies
+
+```{r librairies}
+# N.B.: source("http://bioconductor.org/biocLite.R")
+# biocLite("rhdf5")
+library(dplyr)
+library(ggplot2)
+library(ggridges)
+library(glue)
+library(magrittr)
+library(MaMuT2R)
+library(plotly)
+library(rhdf5)
+library(XML)
+library(xml2)
+library(viridis)
+```
+
+
+#### Loading Data ####
+
+
+```{r data}
+dir <- "/Users/mlouveaux/Documents/Postdoc/Projects/Nuclei_segmentation/2017-05-29_MaMuT_H5"
+MaMuT_file <- "2017-02-23_16.59.21_stPVB003-2-2xDR5v2_test_cropped_dc_export-mamut.xml"
+H5_file <- "2017-02-23_16.59.21_stPVB003-2-2xDR5v2_test_cropped_dc_export.h5"
+
+MaMuT_path <- file.path(dir, MaMuT_file)
+H5_path <- file.path(dir, H5_file)
+
+
+
+# Bioutifoul
+# MaMuT_path <- "/Users/mlouveaux/root/home/common/Datasets/Marion/2017-07-31_16.38.32_stPVB003-2-2xDR5v2_F3_nb25_bioutifoul/BDV/2017-09-02_18_43_17_stPVB003-2-2xDR5v2_F3_nb25_bioutifoul_fused_dc_cropped_export-mamut.xml"
+# H5_path <- "/Users/mlouveaux/root/home/common/Datasets/Marion/2017-07-31_16.38.32_stPVB003-2-2xDR5v2_F3_nb25_bioutifoul/BDV/2017-09-02_18_43_17_stPVB003-2-2xDR5v2_F3_nb25_bioutifoul_fused_dc_cropped_export.h5"
+
+# Marvelous
+
+# MaMuT_path <- "/Users/mlouveaux/root/home/common/Datasets/Marion/2017-08-02_17.49.34_stPVB003-2-2xDR5v2_F3_nb25_Marvelous/BDV/2017-08-02_17.49.34_stPVB003-2-2xDR5v2_F3_nb25_Marvelous_fused_cropped_export-mamut.xml"
+# H5_path <- "/Users/mlouveaux/root/home/common/Datasets/Marion/2017-08-02_17.49.34_stPVB003-2-2xDR5v2_F3_nb25_Marvelous/BDV/2017-08-02_17.49.34_stPVB003-2-2xDR5v2_F3_nb25_Marvelous_fused_cropped_export.h5"
+
+
+# niiice
+
+# MaMuT_path <- "/Users/mlouveaux/root/home/common/Datasets/Marion/2017-09-02_18.43.17_stPVB003-2-2xDR5v2_F3_nb25_niice/BDV/2017-09-02_18_43_17_stPVB003-2-2xDR5v2_F3_nb25_fused_cropped_export-mamut.xml"
+# H5_path <- "/Users/mlouveaux/root/home/common/Datasets/Marion/2017-09-02_18.43.17_stPVB003-2-2xDR5v2_F3_nb25_niice/BDV/2017-09-02_18_43_17_stPVB003-2-2xDR5v2_F3_nb25_fused_cropped_export.h5"
+
+# HelloWorld
+MaMuT_path <- "/Users/mlouveaux/root/home/common/Datasets/Marion/2017-09-05_10.09.49_stPVB003-2-2xDR5v2_F3_nb25_helloW/BDV/2017-09-05_10.09.49_stPVB003-2-2xDR5v2_F3_nb25_helloW_fused_dc_cropped_export-mamut.xml"
+H5_path <- "/Users/mlouveaux/root/home/common/Datasets/Marion/2017-09-05_10.09.49_stPVB003-2-2xDR5v2_F3_nb25_helloW/BDV/2017-09-05_10.09.49_stPVB003-2-2xDR5v2_F3_nb25_helloW_fused_dc_cropped_export.h5"
+```
+
+## read spots locations
+
+```{r}
+XMLfile <- xmlToList(MaMuT_path)
+```
+
+
+```{r}
+Tracks_df <- Tracks.as.dataframe(XMLfile)
+# save(Tracks_df, file = "Tracks_df_helloW.RData")
+```
+
+
+```{r}
+Spots_df <- Spots.as.dataframe(XMLfile)
+# save(Spots_df, file = "Spots_df_helloW.RData")
+#load(file = "2018-05-03_analysis_4_WT_movies/Spots_df_bioutifoul.RData")
+```
+
+## Get fluorescence values from MaMuT xml files
+
+```{r}
+
+all_cells <- getFluo(x_px = POSITION_X, y_px = POSITION_Y, z_px = POSITION_Z, Spots_df, timepoint = FRAME, cubeSize = 5)
+
+# save(all_cells, file = "fluo_all_cells_helloW_5px.Rdata")
+#load(file = "2018-05-03_analysis_4_WT_movies/fluo_all_cells_bioutifoul_5px.Rdata")
+```
+
+
+#### Plot distribution of fluorescence per nuclei ####
+
+```{r}
+### MaMuT2R vignette
+
+## Displaying the output of getFluo()
+
+# all_cells[[1]] keeps only the first frame: all_cells[[timepoint]][[spot]]
+
+singleFrame <- lapply(all_cells[[6]], function(x){ #N.B. all_cells[[4]] = "T00003"
+  data.frame(frame = x[[1]], name = x[[2]], fluo = as.vector(x[[3]]))
+})
+
+df_singleFrame <- do.call(rbind.data.frame, singleFrame)
+
+head(df_singleFrame)
+
+ggplot(df_singleFrame, aes(x = fluo, y = name, fill = name)) +
+  geom_density_ridges() +
+  theme_ridges() + 
+  theme(legend.position = "none")
+
+#T49: (T00048 in MaMuT for bioutifoul)
+# high fluo values: ID764, ID759, ID138, ID 739, ID733
+# low fluo values: ID 1209, ID1991, ID1832, ID1044
+
+df_singleFrameSMALL <- filter(df_singleFrame, name == "ID764" | name == "ID759" | name == "ID138" | name == "ID739" | name == "ID733" | name == "ID1209" | name == "ID1991" | name == "ID1832" | name == "ID1044")
+
+ggplot(df_singleFrameSMALL, aes(x = fluo, y = name, fill = name)) +
+  geom_density_ridges() +
+  theme_ridges() + 
+  theme(legend.position = "none")
+
+```
+
+# calculate the mean fluo value accross all dataset to normalise value at each nuclei
+```{r}
+
+Spots_df <- mmFluo(Spots_df, all_cells)
+```
+
+
+# normalisation of fluo
+
+1. take the fluo of vasculature nuclei as a reference (check first that they do not change too much over time)
+```{r}
+# load another mamut file as reference: one or several nuclei in the vasculature tracked over the whole movie.
+
+# MaMuT_ref <- ".xml"
+# Spots_df_ref <- Spots.as.dataframe(MaMuT_ref)
+# fluo_ref <- getFluo(Spots_df_ref)
+```
+
+
+2. normalise to mean/median of all nuclei of the whole movie 
+```{r}
+Spots_df <- mmFluo_wholeMovie(Spots_df, all_cells)
+```
+
+
+3. normalise to mean/median of all nuclei of the current frame
+```{r}
+Spots_df <- mmFluo_perT(Spots_df, all_cells)
+
+```
+
+4. look at variations of DR5v2 over time
+
+```{r}
+#Tn+1 - Tn
+diffFluo <- function(Spots_df, all_cells, meancol) {
+  meancol <- enquo(meancol)
+  
+  Spots_df %>% 
+    mutate( prev = lag((!!meancol)) ) %>%
+    mutate(diffFluo = (!!meancol) - prev)
+}
+
+Spots_df <- diffFluo(Spots_df, all_cells, meancol = meanFluo)
+
+
+```
+
+5. do alltogether
+
+```{r}
+
+mmFluo_all(Spots_df, all_cells)
+```
+
+
+
+# Hist of mean fluo values
+
+```{r}
+# MaMuT2R vignette
+ggplot(data=Spots_df, aes(x=meanFluo)) + geom_histogram()
+
+ggplot(data=Spots_df, aes(x=meanFluo)) + geom_histogram() + facet_wrap(facets = "frame") # or with a slider in plotly
+
+ggplot(Spots_df, aes(x = meanFluo, y = frame, fill = frame)) +
+  geom_density_ridges() +
+  theme_ridges() + 
+  theme(legend.position = "none")
+```
+
+
+
+## Send back color to MaMuT
+```{r}
+Spots_df <- heatmap2int(Spots_df, fluoMean)
+```
+
+
+```{r}
+modifyXML(MaMuTpath = MaMuT_path,
+          newFilename = "2017-02-23_16.59.21_stPVB003-2-2xDR5v2_test_cropped_dc_export-mamut.xml",
+          Spots_df = Spots_df)
+
+```
+
+
+
+## Plotly visualisation of fluorescence
+```{r}
+Spots_df <- countSpot(Spots_df, FRAME)
+
+
+#' A layout for 3D scatter plotly graphs with a time player  - cellviz3D; help from Frie
+#'
+#' @param Spots_df dataframe containing x,y,z coordinates, timepoints and number of spots per timepoint (for instance generated with Spots.as.dataframe)
+#' @param x x coordinate
+#' @param y y coordinate
+#' @param z z coordinate
+#' @param timepoint column of the timepoints
+#' @param number column with the number of spots per timepoint
+#' @param color continuous value used for coloring the spots
+#'
+#' @return
+#' @export
+#'
+#' @examples
+
+plotlySpots_all <- function(Spots_df, 
+                            x,
+                            y,
+                            z,
+                            timepoint,
+                            number,
+                            color) {
+  x <- enquo(x)
+  y <- enquo(y)
+  z <- enquo(z)
+  timepoint <- enquo(timepoint)
+  number <- enquo(number)
+  color <- enquo(color)
+  
+  Spots_df_tmp <- Spots_df %>% 
+    mutate(timepointNum = as.numeric((!!timepoint))/2,
+  cellNum =  (!!number),
+  x = (!!x),
+  y=(!!y),
+  z=(!!z),
+  color=(!!color))
+  
+  p <- plot_ly(Spots_df_tmp, x = ~x, y = ~y, z = ~z,
+             frame = ~purrr::map2_chr(
+               .x = purrr::map_chr(
+                 .x = timepointNum,
+                 .f = int2hours), # concat frame with nb of cells
+               .y= cellNum ,~glue(.x, " - ", .y)),
+             text = ~paste('Fluo: ', round(color),
+                           '<br> x: ', round(x)),
+             hoverinfo = 'text') %>%
+  animation_opts(frame=50) %>%
+  add_markers(color = ~ color) %>%
+  layout(scene = list(xaxis = list(title = 'X'),
+                      yaxis = list(title = 'Y'),
+                      zaxis = list(title = 'Z'),
+                      aspectmode = "data"),
+         title = "Growing LRP<br> MaMuT data") %>%
+  animation_slider(
+    currentvalue = list(prefix = "Time: ",
+                        font = list(color="black"), suffix = " cells")
+  )
+  rm(Spots_df_tmp)
+return(p)
+}
+
+plotlySpots_all(Spots_df = Spots_df,
+                x = POSITION_X,
+                y = POSITION_Y,
+                z = POSITION_Z,
+                timepoint = FRAME,
+                number = nb,
+                color = meanFluo)
+
+```
+
+
+```{r}
+## Showing only one timepoint - cellviz3D
+
+#' A layout for 3D scatter plotly graphs for a single timepoint
+#'
+#' @param Spots_df dataframe containing x,y,z coordinates, timepoints and number of spots per tiempoint (for instance generated with Spots.as.dataframe)
+#' @param x x coordinate
+#' @param y y coordinate
+#' @param z z coordinate
+#' @param timepoint column of the timepoints
+#' @param singleTimepoint single timepoint to display
+#' @param number column with the number of spots per timepoint
+#' @param color continuous value used for coloring the spots
+#'
+#' @return
+#' @export
+#'
+#' @examples
+
+plotlySpots <- function(Spots_df, 
+                        x,
+                        y,
+                        z,
+                        timepoint,
+                        singleTimepoint,
+                        number,
+                        color) {
+  
+  x <- enquo(x)
+  y <- enquo(y)
+  z <- enquo(z)
+  timepoint <- enquo(timepoint)
+  timepointName <- enquo(timepoint)
+  number <- enquo(number)
+  color <- enquo(color)
+  
+  Spots_df_tmp <- Spots_df %>% 
+    mutate(timepointNum = as.numeric((!!timepoint))/2,
+           cellNum =  (!!number),
+           x = (!!x),
+           y=(!!y),
+           z=(!!z),
+           color=(!!color)) %>% 
+    filter((!!timepointName) == singleTimepoint)
+  
+  a_text <- glue("Time: ",
+                 int2hours(unique(Spots_df_tmp$timepointNum)),
+                 " - ",
+                 unique(Spots_df_tmp$cellNum),
+                 " cells")
+                 
+  a <- list(
+  x = 0.5,
+  y = -0.05,
+  text = a_text,
+  align = "center",
+  xref = "paper",
+  yref = "paper",
+  showarrow = FALSE,
+  font = list(
+          size = 16
+        )
+)
+  
+  p <- plot_ly(Spots_df_tmp, x = ~x, y = ~y, z = ~z,
+               text = ~paste('Fluo: ', round(color),
+                             '<br> x: ', round(x)),
+               hoverinfo = 'text'
+               ) %>%
+    add_markers(color = ~ color) %>%
+    layout(scene = list(xaxis = list(title = 'X'),
+                        yaxis = list(title = 'Y'),
+                        zaxis = list(title = 'Z'),
+                        aspectmode = "data"),
+           title = "Growing LRP<br> MaMuT data",
+           annotations = a) 
+  
+  rm(Spots_df_tmp)
+  return(p)
+}
+
+plotlySpots(Spots_df = Spots_df,
+                x = POSITION_X,
+                y = POSITION_Y,
+                z = POSITION_Z,
+                timepoint = FRAME,
+            singleTimepoint = "5",
+                number = nb,
+                color = meanFluo)
+```
+
+
+# DR5v2 and division
+
+fluo of mother just before division in function of the type of division?
+
+
+
+
+
+
+
+
+
