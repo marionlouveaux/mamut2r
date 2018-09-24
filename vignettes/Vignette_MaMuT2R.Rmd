@@ -1,5 +1,5 @@
 ---
-title: "Vignette MaMuT2R"
+title: "Vignette MaMuT2R - getting started"
 author: "Marion Louveaux"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -84,6 +84,15 @@ Spots_df <- Spots_df %>%
 
 # all_data <- dplyr::left_join(x = Spots_Tracks, y = df_meanFluo)
 ```
+
+
+## Adding the location coordinates in pixels
+
+```{r}
+Spots_df <- add_px_loc(Spots_df, x_m = POSITION_X, y_m = POSITION_Y, z_m = POSITION_Z)
+#NB: would be great to extract the resolution directly from MaMuT file, but I don't have it in my files
+```
+
 
 
 ## Checking tracks
