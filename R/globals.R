@@ -1,12 +1,25 @@
 
 utils::globalVariables(c("ID",
                          "RADIUS",
+                         "FRAME",
                          "POSITION_T",
                          "POSITION_X",
                          "POSITION_Y",
                          "POSITION_Z",
                          "SPOT_SOURCE_ID",
                          "SPOT_TARGET_ID",
+                         "SPOT_SOURCE_ID_orig",
+                         "SPOT_TARGET_ID_orig",
+                         "SPOT_SOURCE_FRAME",
+                         "SPOT_TARGET_FRAME",
+                         "SPOT_SOURCE_FRAME_orig",
+                         "SPOT_TARGET_FRAME_orig",
+                         "TRACK_ID",
+                         "TRACK_ID.x",
+                         "TRACK_ID.y",
                          "VELOCITY",
-                         "DISPLACEMENT"
+                         "DISPLACEMENT",
+                         "x",
+                         "y",
+                         "ylab"
                          ))
