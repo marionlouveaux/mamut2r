@@ -1,7 +1,10 @@
 #' Convert MaMuT xml Tracks tags to a dataframe
 #'
 #' @param MaMuT_XML .xml MaMuT Fiji plugin file converted to list with readMaMuT()
-#' @keywords Fiji, 3D, MaMuT, xml
+#' @importFrom dplyr bind_rows
+#' @importFrom dplyr mutate
+#' @importFrom tibble as.tibble
+#'
 #' @export
 #' @examples
 #' @return Dataframe containing the spot ID, its name, its visibility, its radius, quality, source and position (x, y, z, t).
@@ -39,7 +42,15 @@ Tracks.as.dataframe <- function(MaMuT_XML){
 
     Tracks_df_tmp <- cbind(Tracks_df_tmp, data.frame(TRACK_NAME, TRACK_ID, TRACK_INDEX, stringsAsFactors = FALSE), row.names = NULL)
 
-    Tracks_df <- dplyr::bind_rows(Tracks_df, Tracks_df_tmp)
+    Tracks_df_tmp <- Tracks_df_tmp %>%
+      mutate(SPOT_SOURCE_ID=as.integer(SPOT_SOURCE_ID),
+           SPOT_TARGET_ID=as.integer(SPOT_TARGET_ID),
+           VELOCITY=as.numeric(VELOCITY),
+           DISPLACEMENT=as.numeric(DISPLACEMENT))
+
+    Tracks_df <- Tracks_df %>%
+      bind_rows(Tracks_df_tmp) %>%
+    as.tibble()
   }
 return(Tracks_df)
 }
