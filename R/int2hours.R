@@ -4,7 +4,7 @@
 #' @param x integer
 #' @importFrom glue glue
 #'
-#' @return a string
+#' @return a string with the hour in digital format (HH:mm)
 #' @export
 #'
 #' @examples
