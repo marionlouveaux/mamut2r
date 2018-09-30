@@ -4,7 +4,7 @@
 #' @param all_cells fluorescent values collected in a cube of a given size around each spot location
 #' @importFrom dplyr mutate
 #'
-#' @return
+#' @return a dataframe
 #' @export
 #'
 #' @examples

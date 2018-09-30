@@ -5,7 +5,7 @@
 #' @importFrom dplyr left_join
 #' @importFrom dplyr mutate
 #'
-#' @return
+#' @return a dataframe
 #' @export
 #'
 #' @examples

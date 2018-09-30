@@ -3,7 +3,7 @@
 #' @param Spots_df  a dataframe containing the spots coordinates
 #' @param all_cells fluorescent values collected in a cube of a given size around each spot location
 #'
-#' @return
+#' @return a dataframe
 #' @export
 #'
 #' @examples

@@ -2,12 +2,12 @@
 
 #' Conversion of continuous variable to discrete integers for visualisation in MaMuT
 #'
-#' @param Spots_df
+#' @param Spots_df a dataframe created with Spots.as.Dataframe
 #' @param my_var continuous variable to convert as discrete HEX, then integer readable by MaMuT
 #' @importFrom dplyr enquo
 #' @importFrom dplyr mutate
 #'
-#' @return
+#' @return a dataframe
 #' @export
 #'
 #' @examples

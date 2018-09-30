@@ -3,12 +3,13 @@
 #' Extracting fluorescence values
 #' Extracting fluorescence values in an .h5 file in the BigDataViewer format around given coordinates
 #'
-#' @param x_px name of the column with x coordinates in pixels
-#' @param y_px name of the column with y coordinates in pixels
-#' @param z_px name of the column with z coordinates in pixels
 #' @param Spots_df dataframe containing on each rows spots locations at which to retrieve fluorescent values
+#' @param x_px name of the column with x coordinates in pixels in Spots_df
+#' @param y_px name of the column with y coordinates in pixels in Spots_df
+#' @param z_px name of the column with z coordinates in pixels in Spots_df
 #' @param timepoint name of the column where the timepoints or frames are stored
 #' @param cubeSize half the length of the cube side length. By default the cube is 10x10x10 pixels.
+#' @param H5_path path to the H5 file used to create the mamut.xml file
 #'
 #' @importFrom rhdf5 h5read
 #' @importFrom rhdf5 h5closeAll
@@ -21,8 +22,8 @@
 #'
 #' @examples
 
-getFluo <- function(x_px = x_px, y_px = y_px, z_px = z_px, Spots_df, timepoint = FRAME, cubeSize = 5) {
-
+getFluo <- function(H5_path, Spots_df, x_px = x_px, y_px = y_px, z_px = z_px, timepoint = FRAME, cubeSize = 5) {
+browser()
   x_px <- enquo(x_px)
   y_px <- enquo(y_px)
   z_px <- enquo(z_px)

@@ -7,7 +7,7 @@
 #' @importFrom dplyr left_join
 #' @importFrom dplyr summarize
 #'
-#' @return
+#' @return a dataframe
 #' @export
 #'
 #' @examples

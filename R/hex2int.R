@@ -2,7 +2,7 @@
 #'
 #' @param x an HEX color
 #'
-#' @return
+#' @return an integer
 #' @export
 #'
 #' @examples

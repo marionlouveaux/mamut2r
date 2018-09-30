@@ -4,7 +4,7 @@
 #' see also documentation here: https://cran.r-project.org/web/packages/xml2/vignettes/modification.html
 #' @param ... A spot dataframe
 #'
-#' @return
+#' @return a character
 #' @export
 #'
 #' @examples
