@@ -5,7 +5,6 @@
 #' @importFrom dplyr mutate
 #' @importFrom tibble as.tibble
 #'
-#' @keywords
 #' @export
 #' @examples
 #' @return Dataframe containing the spot ID, its name, its visibility, its radius, quality, source and position (x, y, z, t).
