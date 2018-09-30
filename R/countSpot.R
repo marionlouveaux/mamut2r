@@ -5,7 +5,7 @@
 #' @importFrom dplyr enquo
 #' @importFrom dplyr group_by
 #' @importFrom dplyr left_join
-#' @importFrom dplyr summarize
+#' @importFrom dplyr summarize n
 #'
 #' @return a dataframe
 #' @export

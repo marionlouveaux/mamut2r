@@ -2,8 +2,10 @@
 #'
 #' @param Spots_df a dataframe containing the spots coordinates
 #' @param all_cells fluorescent values collected in a cube of a given size around each spot location
+#'
 #' @importFrom dplyr left_join
 #' @importFrom dplyr mutate
+#' @importFrom stats median
 #'
 #' @return a dataframe
 #' @export

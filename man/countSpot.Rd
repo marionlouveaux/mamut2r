@@ -11,6 +11,9 @@ countSpot(Spots_df, timepoint)
 
 \item{timepoint}{column of timepoints}
 }
+\value{
+a dataframe
+}
 \description{
 Counting spots per timepoints
 }

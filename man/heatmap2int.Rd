@@ -7,7 +7,12 @@
 heatmap2int(Spots_df, my_var = fluoMean)
 }
 \arguments{
+\item{Spots_df}{a dataframe created with Spots.as.Dataframe}
+
 \item{my_var}{continuous variable to convert as discrete HEX, then integer readable by MaMuT}
+}
+\value{
+a dataframe
 }
 \description{
 Conversion of continuous variable to discrete integers for visualisation in MaMuT

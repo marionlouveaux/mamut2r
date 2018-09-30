@@ -10,6 +10,9 @@ makeSpotNode(...)
 \arguments{
 \item{...}{A spot dataframe}
 }
+\value{
+a character
+}
 \description{
 see also documentation here: https://cran.r-project.org/web/packages/xml2/vignettes/modification.html
 }

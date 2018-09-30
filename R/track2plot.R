@@ -6,7 +6,9 @@
 #' @param Spots_Tracks Spots_df with Track name
 #' @param colNode color of the nodes, use colNode_discrete to specify if discrete or continuous
 #' @param colYaxis display or not y axis
-#' @param colNode_discrete discrete or continuous, default to FALSE e.g. continuous
+#' @param colNode_discrete Logical. discrete scale if TRUE, continuous otherwise. Default to FALSE e.g. continuous.
+#' @param breaks vector of levels used to plot discrete color legend with regards to colNode unique values. Only if colNode_discrete is TRUE
+#'
 #' @importFrom dplyr enquo filter mutate pull select
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 element_blank

@@ -11,6 +11,9 @@ mmFluo_wholeMovie(Spots_df, all_cells)
 
 \item{all_cells}{fluorescent values collected in a cube of a given size around each spot location}
 }
+\value{
+a dataframe
+}
 \description{
 Calculate a mean and median fluorescent value for the whole movie over all spots
 }

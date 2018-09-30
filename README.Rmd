@@ -1,23 +1,30 @@
 ---
-title: "Vignette MaMuT2R - getting started"
-author: "Marion Louveaux"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette MaMuT2R - getting started}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  chunk_output_type: console
+output: github_document
 ---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.align = "center"
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
+# mamut2r
+
+The goal of {mamut2r} is to imports data coming from .xml files generated with the Fiji MaMuT plugin for lineage and tracking of biological objects. {mamut2r} also allows to create lineage plots.
+
+## Installation
+
+{mamut2r} is only available on Github.
+
+``` r
+# install.packages("devtools")
+devtools::install_github("marionlouveaux/mamut2r")
+```
+
 
 ```{r, echo=TRUE, message=FALSE}
 library(mamut2r)
@@ -103,3 +110,6 @@ legend <- get_legend(all_layouts[[1]]+theme(legend.position="right"))
 p <- plot_grid( prow, legend, rel_widths = c(1, .3))
 p
 ```
+
+
+Please note that the 'mamut2r' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.

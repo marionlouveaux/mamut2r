@@ -1,5 +1,6 @@
 
-utils::globalVariables(c("ID",
+utils::globalVariables(c(".",
+                         "ID",
                          "RADIUS",
                          "FRAME",
                          "POSITION_T",
@@ -21,5 +22,11 @@ utils::globalVariables(c("ID",
                          "DISPLACEMENT",
                          "x",
                          "y",
-                         "ylab"
-                         ))
+                         "ylab",
+                         "fluoMean",
+                         "colorClass",
+                         "heat",
+                         "meanFluo",
+                         "name",
+                         "diffFluo"
+))

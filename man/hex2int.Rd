@@ -9,6 +9,9 @@ hex2int(x)
 \arguments{
 \item{x}{an HEX color}
 }
+\value{
+an integer
+}
 \description{
 Converting HEX colors to MaMut integer color scale
 }

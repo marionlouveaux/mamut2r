@@ -5,7 +5,8 @@
 \title{Plotting tracks
 Plotting MaMuT tracks with custom color code}
 \usage{
-track2plot(track, Tracks_df, Spots_Tracks, colNode, colYaxis, colNode_discrete)
+track2plot(track, Tracks_df, Spots_Tracks, colNode, colYaxis,
+  colNode_discrete, breaks)
 }
 \arguments{
 \item{track}{track name}
@@ -18,9 +19,19 @@ track2plot(track, Tracks_df, Spots_Tracks, colNode, colYaxis, colNode_discrete)
 
 \item{colYaxis}{display or not y axis}
 
-\item{colNode_discrete}{discrete or continuous, default to FALSE e.g. continuous}
+\item{colNode_discrete}{Logical. discrete scale if TRUE, continuous otherwise. Default to FALSE e.g. continuous.}
+
+\item{breaks}{vector of levels used to plot discrete color legend with regards to colNode unique values. Only if colNode_discrete is TRUE}
+}
+\value{
+a plot
 }
 \description{
 Plotting tracks
 Plotting MaMuT tracks with custom color code
+}
+\examples{
+\dontrun{
+track2plot(track, Tracks_df, Spots_Tracks, colNode, colYaxis, colNode_discrete, breaks)
+}
 }

@@ -8,7 +8,7 @@
 #' @importFrom purrr pmap_chr
 #' @importFrom xml2 xml_replace
 #' @importFrom xml2 xml_find_all
-#' @importFrom xml2 write_xml
+#' @importFrom xml2 write_xml read_xml
 #'
 #' @return a new .xml file
 #' @export

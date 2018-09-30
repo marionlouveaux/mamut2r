@@ -5,17 +5,19 @@
 \title{Extracting fluorescence values
 Extracting fluorescence values in an .h5 file in the BigDataViewer format around given coordinates}
 \usage{
-getFluo(x_px = x_px, y_px = y_px, z_px = z_px, Spots_df,
+getFluo(H5_path, Spots_df, x_px = x_px, y_px = y_px, z_px = z_px,
   timepoint = FRAME, cubeSize = 5)
 }
 \arguments{
-\item{x_px}{name of the column with x coordinates in pixels}
-
-\item{y_px}{name of the column with y coordinates in pixels}
-
-\item{z_px}{name of the column with z coordinates in pixels}
+\item{H5_path}{path to the H5 file used to create the mamut.xml file}
 
 \item{Spots_df}{dataframe containing on each rows spots locations at which to retrieve fluorescent values}
+
+\item{x_px}{name of the column with x coordinates in pixels in Spots_df}
+
+\item{y_px}{name of the column with y coordinates in pixels in Spots_df}
+
+\item{z_px}{name of the column with z coordinates in pixels in Spots_df}
 
 \item{timepoint}{name of the column where the timepoints or frames are stored}
 
