@@ -25,30 +25,22 @@ usethis::use_gpl3_license("Marion Louveaux")
 
 # Add dependencies to Description
 usethis::use_pipe()
-# usethis::use_roxygen_md()
-# devtools::install_github("ThinkR-open/attachment")
-devtools::document()
-# attachment::att_to_description() #pkg_ignore = "rhdf5"
-# (temporary script)
-library(attachment)
-pkg_name <- "mamut2r"
-path.d <- "DESCRIPTION"
-depends <- c(att_from_namespace("NAMESPACE", document = TRUE),
-             att_from_rscripts("R"))
-
-vg <- att_from_rmds()
-suggests <- vg[!vg %in% c(depends, pkg_name)]
-
-tmp <- lapply(depends, function(x) devtools::use_package(x,
-                                                         type = "Imports", pkg = dirname(path.d)))
-tmp <- lapply(unique(c(suggests)),
-              function(x) devtools::use_package(x, type = "Suggests",
-                                                pkg = dirname(path.d)))
-usethis::use_tidy_description()
-
-# Run Vignette
-devtools::build_vignettes()
 
 # Readme
 usethis::use_readme_rmd()
 usethis::use_code_of_conduct()
+usethis::use_news_md()
+
+# devtools::install_bioc("rhdf5")
+source("https://bioconductor.org/biocLite.R")
+biocLite("rhdf5", suppressUpdates = TRUE)
+# usethis::use_roxygen_md()
+# devtools::install_github("ThinkR-open/attachment")
+attachment::att_to_description(extra.suggests = "pkgdown") #pkg_ignore = "rhdf5"
+
+
+# Run Vignette
+devtools::build_vignettes()
+
+# Test pkgdown
+pkgdown::build_site()

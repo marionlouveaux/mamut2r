@@ -12,6 +12,8 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) 
+
 # mamut2r
 
 The goal of {mamut2r} is to imports data coming from .xml files generated with the Fiji MaMuT plugin for lineage and tracking of biological objects. {mamut2r} also allows to create lineage plots.
@@ -21,6 +23,9 @@ The goal of {mamut2r} is to imports data coming from .xml files generated with t
 {mamut2r} is only available on Github.
 
 ``` r
+# rhdf5 (>= 2.24.0) required
+# source("https://bioconductor.org/biocLite.R")
+# biocLite("rhdf5", suppressUpdates = TRUE)
 # install.packages("devtools")
 devtools::install_github("marionlouveaux/mamut2r")
 ```
@@ -88,13 +93,13 @@ all_tracks <- unique(Tracks_df$TRACK_ID)
 ```
 
 To plot one track:    
-```{r}
+```{r onetrack}
 track2plot(track = "1", Tracks_df, Spots_Tracks,
            colNode = FRAME, colYaxis = "black", colNode_discrete = TRUE)
 ```
 
 To plot the first six tracks:      
-```{r, fig.width=9, fig.height=6, out.width="100%"}
+```{r multipletracks, fig.width=9, fig.height=6, out.width="100%"}
 trackset <- all_tracks[1:6]
 nbrow <- 2
 #display y axis only for plots on the left

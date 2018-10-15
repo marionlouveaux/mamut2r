@@ -4,3 +4,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^devstuff_history\.R$
+docs
+.travis.yml
