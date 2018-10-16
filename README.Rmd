@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) 
+[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/statnmap/mamut2r?branch=master&svg=true)](https://ci.appveyor.com/project/statnmap/mamut2r)
 
 # mamut2r
 

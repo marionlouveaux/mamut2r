@@ -30,6 +30,7 @@ usethis::use_pipe()
 usethis::use_readme_rmd()
 usethis::use_code_of_conduct()
 usethis::use_news_md()
+usethis::use_appveyor()
 
 # devtools::install_bioc("rhdf5")
 source("https://bioconductor.org/biocLite.R")
