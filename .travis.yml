@@ -1,11 +1,16 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
-language: R
+language: r
 sudo: false
 cache: packages
 
+r:
+- devel
+
 bioc_required: true
 bioc_use_devel: true
+
+r: bioc-devel
 
 before_install:
   - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
@@ -15,6 +20,8 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install --yes libudunits2-dev; fi;
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install udunits; fi;
   - export RGL_USE_NULL=TRUE
+  - "Rscript -e 'install.packages(\"BiocManager\")"
+  - "Rscript -e 'BiocManager::install(\"rhdf5\")"
 
 bioc_packages:
   - rhdf5

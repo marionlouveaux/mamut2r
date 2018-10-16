@@ -30,8 +30,8 @@ devtools::install_github("marionlouveaux/mamut2r")
 You may need to install dependencies before:
 ```{r, eval=FALSE}
 # rhdf5 (>= 2.24.0) on bioconductor is required
-source("https://bioconductor.org/biocLite.R")
-biocLite("rhdf5", suppressUpdates = TRUE)
+install.packages("BiocManager")
+BiocManager::install("rhdf5", update = FALSE)
 # Other packages on CRAN
 to_install <- c("classInt", "cowplot", "dplyr", "ggplot2", "ggraph", "glue", "grDevices", "igraph", "knitr", "magrittr", "purrr", "rmarkdown", "stats", "tibble", "utils", "viridis", "XML", "xml2")
 for (i in to_install) {
