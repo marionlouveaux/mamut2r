@@ -5,7 +5,7 @@ sudo: false
 cache: packages
 
 r:
-- devel
+  - devel
 
 bioc_required: true
 bioc_use_devel: true
