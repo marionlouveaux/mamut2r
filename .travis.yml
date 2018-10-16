@@ -8,7 +8,7 @@ bioc_required: true
 bioc_use_devel: true
 
 bioc_packages:
-- rhdf5
+  - rhdf5
 
 before_install:
   - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
