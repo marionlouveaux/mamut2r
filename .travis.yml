@@ -20,8 +20,8 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install --yes libudunits2-dev; fi;
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install udunits; fi;
   - export RGL_USE_NULL=TRUE
-  - "Rscript -e 'install.packages(\"BiocManager\")"
-  - "Rscript -e 'BiocManager::install(\"rhdf5\")"
+  - "Rscript -e 'install.packages(\"BiocManager\")'
+  - "Rscript -e 'BiocManager::install(\"rhdf5\")'
 
 bioc_packages:
   - rhdf5
