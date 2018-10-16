@@ -15,12 +15,42 @@ biological objects. {mamut2r} also allows to create lineage plots.
 {mamut2r} is only available on Github.
 
 ``` r
-# rhdf5 (>= 2.24.0) required
-# source("https://bioconductor.org/biocLite.R")
-# biocLite("rhdf5", suppressUpdates = TRUE)
 # install.packages("devtools")
 devtools::install_github("marionlouveaux/mamut2r")
 ```
+
+You may need to install dependencies before:
+
+``` r
+# rhdf5 (>= 2.24.0) on bioconductor is required
+source("https://bioconductor.org/biocLite.R")
+biocLite("rhdf5", suppressUpdates = TRUE)
+# Other packages on CRAN
+to_install <- c("classInt", "cowplot", "dplyr", "ggplot2", "ggraph", "glue", "grDevices", "igraph", "knitr", "magrittr", "purrr", "rmarkdown", "stats", "tibble", "utils", "viridis", "XML", "xml2")
+for (i in to_install) {
+  message(paste("looking for ", i))
+  if (!requireNamespace(i)) {
+    message(paste("     installing", i))
+    install.packages(i)
+  }
+}
+```
+
+*For Linux and MacOS* To install {ggraph}, you will need “udunits”.
+
+  - *Ubuntu:*
+
+<!-- end list -->
+
+    sudo apt-get install --yes libudunits2-dev
+
+  - *MacOS:*
+
+<!-- end list -->
+
+    brew install udunits
+
+## Test script
 
 ``` r
 library(mamut2r)

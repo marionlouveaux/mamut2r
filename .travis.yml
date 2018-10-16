@@ -7,9 +7,6 @@ cache: packages
 bioc_required: true
 bioc_use_devel: true
 
-bioc_packages:
-  - rhdf5
-
 before_install:
   - echo "TRAVIS_OS_NAME = $TRAVIS_OS_NAME"
   - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
@@ -19,6 +16,29 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install udunits; fi;
   - export RGL_USE_NULL=TRUE
 
+bioc_packages:
+  - rhdf5
+
+r_packages:
+  - classInt
+  - dplyr
+  - ggplot2
+  - ggraph
+  - glue
+  - grDevices
+  - igraph
+  - magrittr
+  - purrr
+  - stats
+  - tibble
+  - utils
+  - viridis
+  - xml2
+  - cowplot
+  - knitr
+  - pkgdown
+  - rmarkdown
+  - XML
 #
 #
 #  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get --yes --force-yes update -qq; fi;

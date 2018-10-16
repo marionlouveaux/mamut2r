@@ -37,7 +37,7 @@ biocLite("rhdf5", suppressUpdates = TRUE)
 # usethis::use_roxygen_md()
 # devtools::install_github("ThinkR-open/attachment")
 attachment::att_to_description(extra.suggests = "pkgdown") #pkg_ignore = "rhdf5"
-
+attachment::create_dependencies_file(field = c("Depends", "Imports", "Suggests"))
 
 # Run Vignette
 devtools::build_vignettes()
