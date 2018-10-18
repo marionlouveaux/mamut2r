@@ -33,10 +33,15 @@ library(XML)
 library(tidyr)
 ```
 
-N.B.: To install {rhdf5}:
+To install {rhdf5}:
 ```{r, eval=FALSE}
 source("http://bioconductor.org/biocLite.R")
 biocLite("rhdf5")
+```
+To install {cellviz3d}:
+```{r libdev, warning = FALSE, message = FALSE, eval=FALSE}
+# devtools::install_github("marionlouveaux/cellviz3d")
+library(cellviz3d)
 ```
 
 
