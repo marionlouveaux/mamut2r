@@ -1,0 +1,15 @@
+citHeader("To cite mamut2r in publications use:")
+
+citEntry(entry = "misc",
+  title        = "mamut2r: A R-package to import MaMuT xml files into R.",
+  author       = personList(as.person("Marion Louveaux")),
+  journal      = "Zenodo",
+  year         = "2018",
+  url          = "http://doi.org/",
+
+  textVersion  =
+  paste("Marion Louveaux. (2018, October 15).",
+        "mamut2r: A R-package to import MaMuT xml files into R.",
+        "Zenodo.",
+        "http://doi.org/")
+)
