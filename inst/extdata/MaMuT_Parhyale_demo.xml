@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpimData version="0.2">
+  <BasePath type="relative">.</BasePath>
+  <SequenceDescription>
+    <ImageLoader format="bdv.hdf5">
+      <hdf5 type="relative">MaMuT_Parhyale_demo.h5</hdf5>
+    </ImageLoader>
+    <ViewSetups>
+      <ViewSetup>
+        <id>0</id>
+        <size>1020 966 996</size>
+        <voxelSize>
+          <unit>um</unit>
+          <size>0.5083 0.5083 0.5083</size>
+        </voxelSize>
+        <attributes>
+          <illumination>0</illumination>
+          <channel>0</channel>
+          <angle>0</angle>
+        </attributes>
+      </ViewSetup>
+      <ViewSetup>
+        <id>1</id>
+        <size>1920 1920 250</size>
+        <voxelSize>
+          <unit>um</unit>
+          <size>0.254167 0.254167 1.0</size>
+        </voxelSize>
+        <attributes>
+          <illumination>0</illumination>
+          <channel>0</channel>
+          <angle>1</angle>
+        </attributes>
+      </ViewSetup>
+      <ViewSetup>
+        <id>2</id>
+        <size>1920 1920 250</size>
+        <voxelSize>
+          <unit>um</unit>
+          <size>0.254167 0.254167 1.0</size>
+        </voxelSize>
+        <attributes>
+          <illumination>0</illumination>
+          <channel>0</channel>
+          <angle>2</angle>
+        </attributes>
+      </ViewSetup>
+      <ViewSetup>
+        <id>3</id>
+        <size>1920 1920 250</size>
+        <voxelSize>
+          <unit>um</unit>
+          <size>0.254167 0.254167 1.0</size>
+        </voxelSize>
+        <attributes>
+          <illumination>0</illumination>
+          <channel>0</channel>
+          <angle>3</angle>
+        </attributes>
+      </ViewSetup>
+      <Attributes name="illumination">
+        <Illumination>
+          <id>0</id>
+          <name>0</name>
+        </Illumination>
+      </Attributes>
+      <Attributes name="channel">
+        <Channel>
+          <id>0</id>
+          <name>0</name>
+        </Channel>
+      </Attributes>
+      <Attributes name="angle">
+        <Angle>
+          <id>0</id>
+          <name>0</name>
+        </Angle>
+        <Angle>
+          <id>1</id>
+          <name>325</name>
+        </Angle>
+        <Angle>
+          <id>2</id>
+          <name>280</name>
+        </Angle>
+        <Angle>
+          <id>3</id>
+          <name>235</name>
+        </Angle>
+      </Attributes>
+    </ViewSetups>
+    <Timepoints type="pattern">
+      <integerpattern>0, 1, 2, 3, 4, 5, 6, 7, 8, 9</integerpattern>
+    </Timepoints>
+    <MissingViews/>
+  </SequenceDescription>
+  <ViewRegistrations>
+    <ViewRegistration timepoint="0" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="0" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0157700325166714 0.0031783238183174436 0.008303788651262918 71.53695428887394 -0.007343703713326981 1.0238534791424931 -0.013943648635084793 -29.24753069683057 0.009961678374999425 0.002285664146936761 1.0189735006755618 956.2560446909091</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="0" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0157567025048897 -0.004325407528171196 0.012178834236156712 78.82510544145286 -0.007652110159820355 0.7389777795151627 0.7082702347268381 134.3233392652396 0.005738707227565708 -0.7244640560152017 0.7194432528379331 1708.1976610732747</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="0" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0160249722671733 -0.0117963121571861 0.010425145304325978 92.25814193528421 -0.01139486534662651 0.024071935732162653 1.029829060919623 779.4699150101583 0.002887092686904888 -1.0277707248438206 0.002702037775691668 2076.5954588766244</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="1" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="1" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0164263580241826 0.0021276850559117516 0.004504592326551232 74.53688862874691 -0.0062835691393519945 1.0235901521868063 -0.01335465378072409 -30.021270873361452 0.007524901008303685 0.002852992772735985 1.0192805633573512 957.2937954029339</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="1" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0165350268438418 -0.002435308653351835 0.00860937125486877 78.83172683423868 -0.00657826715050451 0.7380864159852359 0.7088127767610066 133.87702416942716 0.0032258375984083078 -0.7241997593653013 0.7199293953774487 1710.4474271731228</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="1" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0167650353705888 -0.007973473908606615 0.009090732276946012 90.40340847440226 -0.010419039233983254 0.023040149741791582 1.0297354911405907 779.1441134522917 4.408046936553167E-4 -1.0279450107188732 0.0029633672612627837 2079.4865489504064</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="2" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="2" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.016814358687962 0.002111230926951077 0.003506106393234759 75.9253894456203 -0.006461718520628237 1.0234721736658208 -0.012970857477784481 -29.590776711161492 0.007700349607394675 0.0025116716271226247 1.0188176696606535 957.9094825100852</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="2" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.016795290381819 -0.0019086181929065457 0.008287312814558495 79.50656089585227 -0.00675868309390705 0.7380026158323034 0.7085752797647787 135.1453412154395 0.0035280385671464954 -0.7240813263469953 0.7192804413573519 1710.857874422989</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="2" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.017043044719257 -0.007465756555110836 0.00912732869693117 90.36260930918449 -0.01059170036023345 0.02334828611970735 1.0287392118998018 779.9101455846329 4.999598332692465E-4 -1.0271673741583922 0.0020007510228697845 2079.0038907199514</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="3" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="3" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0167610264737712 0.00210557892605176 0.0035573753998802693 76.8222648438904 -0.006483418236241014 1.0235845415540945 -0.012913950016479214 -29.86591794712495 0.007548959086980188 0.0027291689720475576 1.019203001984411 956.7786485550305</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="3" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.016777092352066 -0.001970485147922682 0.008240096232487198 80.2438694770216 -0.006762694915558337 0.7379063594043463 0.7087022520880052 135.35433197188928 0.003062661904860202 -0.7239816518581813 0.7195727477231726 1710.613259229904</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="3" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0170599985983722 -0.007460730938929572 0.009197356756130037 91.36408176821233 -0.01055198633853327 0.022876319006931323 1.029288753226638 780.359165463348 2.046500583633079E-4 -1.0273455193912564 0.002415929612077372 2079.398699990631</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="4" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="4" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0170131864051768 0.0020154542399504205 0.004075527149787844 77.4014272836128 -0.006068072243335013 1.0236092075279695 -0.012623522530187392 -30.0593282741023 0.007250950248059431 0.002700744634436536 1.0188748241160537 956.9589738702634</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="4" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0170057685205385 -0.0020671165631237984 0.008019850935742298 81.44778851285128 -0.006368561944841693 0.7377894794113324 0.7091447142915439 135.56334642699898 0.0028170746057489815 -0.7239131014162844 0.7193731418741488 1711.4338479583357</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="4" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0172443640719644 -0.007578017388680441 0.009186690453258595 92.36152234518337 -0.010085482692636608 0.02261024402396855 1.0294614498367105 780.5048022276545 3.535829574743965E-5 -1.0275538311928183 0.002783935916237379 2079.7499511210845</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="5" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="5" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0173775806805576 0.0018408227008617148 0.0034809817752322614 78.7325753705731 -0.006218558744766926 1.0235958086215624 -0.012779119091210767 -29.91777419593864 0.006855104244000045 0.002551069915856241 1.0182638818666385 958.7009644597648</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="5" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.017349980734547 -0.0018966469091386065 0.007348804649585178 82.4914217097746 -0.006338998262766224 0.7381338421673787 0.7084959064239962 135.38856988989613 0.002637212657196464 -0.7241089306463532 0.7197321285327785 1711.865885702556</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="5" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0175090769083748 -0.00710073826699259 0.00887094132727273 93.0235810451818 -0.010214592030111394 0.023242687483092772 1.0291344578333081 780.0108657051935 -6.176712747728297E-5 -1.0276820389345465 0.0032294118176350306 2079.985698446178</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="6" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="6" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.01774201026537 0.0018155940425726158 0.00225337883244342 80.56959994996654 -0.005835767700717448 1.0235075226880466 -0.01187205396919988 -30.317654606017822 0.006851469838263298 0.0028956598352739005 1.0186118441673717 959.447487566662</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="6" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.017720318244027 -0.0012096554012770537 0.007228252729604437 82.58965661992448 -0.0059520531784416145 0.7373631100337945 0.708936723176032 135.79750136238619 0.002527182501992643 -0.7239551997565501 0.7204690802046088 1711.7764550199552</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="6" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0178671532747527 -0.005970140042264871 0.008479031529656678 93.45343291482455 -0.009922399593320558 0.022351192808654108 1.0288842454370655 781.7195752866355 -1.6398483390899637E-4 -1.027558211639071 0.0034694270564856744 2080.5673639869206</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="7" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="7" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0176910601287472 0.0018120120313875679 0.002655848771967839 80.65404191571184 -0.005838213118861737 1.0233794451103724 -0.011853223311741434 -30.029533285966018 0.006713025173099754 0.0027608144932894096 1.019531681532934 957.9993355064854</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="7" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0175885823250959 -0.001041283633377868 0.006877926984168753 83.59047919585836 -0.0058787084250534125 0.7371765560457673 0.709051115259841 135.99603762205595 0.0023947480282025466 -0.723894255145917 0.7197854743269039 1712.088437719558</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="7" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0178127977784985 -0.005777913419161659 0.008644299692936674 94.36151340298963 -0.0098162332096179 0.022274960705343405 1.0283198514807201 781.6138207300987 -1.7846014715872105E-4 -1.0273696010333504 0.0034247451253190953 2080.7768084784643</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="8" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="8" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0179474221974556 0.0016251141998002289 0.0019389388951916997 82.02278011919869 -0.005848875037730541 1.023131832518069 -0.011284380762594637 -30.085457827607335 0.006186111778713706 0.0027004416162700884 1.0193089231936783 959.0471255801662</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="8" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.018083738933651 -5.364243820360701E-4 0.0061015851153560785 83.89844584056638 -0.005902003233687683 0.7368294810249771 0.7090855113572778 136.36732736440922 0.0016878426742098617 -0.7237333590968277 0.719648066841027 1712.8880007311539</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="8" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0183716647493544 -0.004874285193918158 0.008474654042526064 94.87172705742478 -0.0097818691024011 0.02157597864525107 1.0292025411537484 781.6809316978827 -6.515756131305825E-4 -1.0273810799060332 0.0031394790529222227 2083.1580856468245</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="9" setup="0">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0 0.0 0.0 0.0 1.9998662296836334 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="9" setup="1">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0180937821658622 0.001567719497741496 0.0011676793322010215 83.89192617711807 -0.005690532739420211 1.0232949440141443 -0.011073891151778259 -30.58258928669261 0.006045669772195741 0.00273644302179471 1.0184067067478175 960.4214212030441</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="9" setup="2">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.018198262052157 -5.393352305900099E-4 0.005560994200910413 85.99320303292953 -0.005772981756513668 0.737119161103286 0.7088735662595784 136.28822400724283 0.0017643090346637314 -0.7236419339419359 0.7192980757873884 1714.4584767017227</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+    <ViewRegistration timepoint="9" setup="3">
+      <ViewTransform type="affine">
+        <Name>Fast 3d geometric hashing (rotation invariant), AffineModel3D on [beads (c=0)]</Name>
+        <affine>1.0184068730810385 -0.005223074772769801 0.008658290925651208 95.0868321797125 -0.009595484251246442 0.021975009358818798 1.0295823760462204 781.5815563829377 -0.0010931830851297272 -1.0271986093353462 0.0027327394877116884 2082.313350569464</affine>
+      </ViewTransform>
+      <ViewTransform type="affine">
+        <Name>calibration</Name>
+        <affine>1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 3.9344210696117123 0.0</affine>
+      </ViewTransform>
+    </ViewRegistration>
+  </ViewRegistrations>
+  <ViewInterestPoints>
+    <ViewInterestPointsFile timepoint="0" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_0_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="0" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_0_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="0" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_0_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="0" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_0_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="1" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_1_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="1" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_1_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="1" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_1_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="1" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_1_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="2" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_2_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="2" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_2_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="2" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_2_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="2" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_2_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="3" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_3_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="3" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_3_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="3" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_3_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="3" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_3_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="4" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_4_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="4" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_4_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="4" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_4_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="4" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_4_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="5" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_5_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="5" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_5_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="5" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_5_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="5" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_5_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="6" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_6_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="6" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_6_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="6" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_6_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="6" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_6_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="7" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_7_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="7" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_7_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="7" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_7_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="7" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_7_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="8" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_8_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="8" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_8_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="8" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_8_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="8" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_8_viewSetupId_3.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="9" setup="0" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_9_viewSetupId_0.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="9" setup="1" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_9_viewSetupId_1.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="9" setup="2" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_9_viewSetupId_2.beads</ViewInterestPointsFile>
+    <ViewInterestPointsFile timepoint="9" setup="3" label="beads" params="DOG s=3.0 t=0.0050 min=false max=true imageSigmaX=0.5 imageSigmaY=0.5 imageSigmaZ=0.5 downsampleXY=1 downsampleZ=1 additionalSigmaX=0.0 additionalSigmaY=0.0 additionalSigmaZ=0.0 minIntensity=NaN maxIntensity=NaN">interestpoints/tpId_9_viewSetupId_3.beads</ViewInterestPointsFile>
+  </ViewInterestPoints>
+  <BoundingBoxes/>
+</SpimData>
