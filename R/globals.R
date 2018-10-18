@@ -28,5 +28,14 @@ utils::globalVariables(c(".",
                          "heat",
                          "meanFluo",
                          "name",
-                         "diffFluo"
+                         "diffFluo",
+                         "affine",
+                         ".attrs",
+                         "regis_name",
+                         "index",
+                         "vector_Affine",
+                         "Timepoint",
+                         "Setup",
+                         "matrix_affine",
+                         "AffineTransform"
 ))
