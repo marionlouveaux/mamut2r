@@ -44,8 +44,13 @@ for (i in to_install) {
 
         brew install udunits
 
-Test script
------------
+Full documentation with {pkgdown}
+---------------------------------
+
+See full documentation created with {pkgdown} at <https://marionlouveaux.github.io/mamut2r/>
+
+Getting started
+---------------
 
 ``` r
 library(mamut2r)
@@ -55,8 +60,7 @@ library(purrr)
 library(XML)
 ```
 
-Load .xml MaMuT file
---------------------
+### Loading .xml MaMuT file
 
 The mamut.xml file is loaded as a list in R using the xmlToList() function from the {XML} package.
 
@@ -64,8 +68,7 @@ The mamut.xml file is loaded as a list in R using the xmlToList() function from 
 fileXML <- xmlToList(system.file("extdata", "MaMuT_Parhyale_demo-mamut.xml", package = "mamut2r"))
 ```
 
-Get information relative to either nuclei (= spots) or lineages (=tracks)
--------------------------------------------------------------------------
+### Getting information relative to either nuclei (= spots) or lineages (=tracks)
 
 The MaMuT .xml file stores two type of objects, under two types of tags: the spots and the tracks. In the case of the study of the development of an organ, spots usually refer to nuclei and tracks to cell lineages. Here, Spots.as.dataframe() and Tracks.as.dataframe() extract information from the .xml file and format them as dataframes (more precisely as tibbles).
 
@@ -113,8 +116,7 @@ Tracks_df
 #> #   TRACK_ID <chr>, TRACK_INDEX <chr>
 ```
 
-Checking tracks
----------------
+### Checking tracks
 
 Tracks are composed of nodes (the spots) and edges (between the spots). Source and target spots are respectively the origin and the end of an edge between two timepoints. checkTrack() checks the orientation of edges and ensure to always have the source spot in an earlier timepoint than the target spot. This is necessary for plotting the lineage trees afterwards with {ggraph}.
 
@@ -139,8 +141,7 @@ Tracks_df
 #> #   SPOT_TARGET_FRAME <dbl>
 ```
 
-Merging spots and tracks information
-------------------------------------
+### Merging spots and tracks information
 
 Spots dataframes can be enriched with information coming from the tracks using spots.and.tracks().
 
@@ -164,8 +165,7 @@ Spots_Tracks
 #> #   FRAME <chr>, POSITION_Z <dbl>, TRACK_ID <chr>
 ```
 
-Lineage tree
-------------
+### Visualising the lineage trees
 
 track2plot() allows to plot the lineage trees with a custom color code.
 Tracks are identified by their ID.
@@ -203,5 +203,13 @@ p
 ```
 
 <img src="man/figures/README-multipletracks-1.png" width="100%" />
+
+Acknowledgements
+----------------
+
+Many thanks to Dr. Jean-Yves Tinevez, John Bogovic, and Dr. Tobias Pietsch for their help on MaMuT and Big Data Viewer.
+
+Code of conduct
+---------------
 
 Please note that the 'mamut2r' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
