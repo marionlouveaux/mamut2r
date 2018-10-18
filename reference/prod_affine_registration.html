@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a spot node
-To modify the mamut.xml file. — makeSpotNode • mamut2r</title>
+<title>Product of affine transformations — prod_affine_registration • mamut2r</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,10 +30,9 @@ To modify the mamut.xml file. — makeSpotNode • mamut2r</title>
 
 
 
-<meta property="og:title" content="Create a spot node
-To modify the mamut.xml file. — makeSpotNode" />
+<meta property="og:title" content="Product of affine transformations — prod_affine_registration" />
 
-<meta property="og:description" content="see also documentation here: https://cran.r-project.org/web/packages/xml2/vignettes/modification.html" />
+<meta property="og:description" content="Product of affine transformations" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,42 +115,50 @@ To modify the mamut.xml file. — makeSpotNode" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a spot node
-To modify the mamut.xml file.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/marionlouveaux/mamut2r/blob/master/R/makeSpotNode.R'><code>R/makeSpotNode.R</code></a></small>
-    <div class="hidden name"><code>makeSpotNode.Rd</code></div>
+    <h1>Product of affine transformations</h1>
+    <small class="dont-index">Source: <a href='https://github.com/marionlouveaux/mamut2r/blob/master/R/prod_affine_registration.R'><code>R/prod_affine_registration.R</code></a></small>
+    <div class="hidden name"><code>prod_affine_registration.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>see also documentation here: https://cran.r-project.org/web/packages/xml2/vignettes/modification.html</p>
+    <p>Product of affine transformations</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeSpotNode</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>prod_affine_registration</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>A spot dataframe</p></td>
+      <th>x</th>
+      <td><p>tibble of Registrations as issued from <code><a href='read_ViewRegistration.html'>read_ViewRegistration</a></code></p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a character</p>
-    
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>v1</span> <span class='kw'>&lt;-</span> <span class='fu'>round</span>(<span class='fu'>rnorm</span>(<span class='fl'>12</span>), <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='no'>v2</span> <span class='kw'>&lt;-</span> <span class='fu'>sample</span>(<span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>12</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>good_res</span> <span class='kw'>&lt;-</span> <span class='fu'>crossprod</span>(<span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='no'>v1</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), <span class='fl'>4</span>, <span class='fl'>4</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+  <span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='no'>v2</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), <span class='fl'>4</span>, <span class='fl'>4</span>, <span class='kw'>byrow</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(
+  <span class='kw'>regis_name</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>1</span>),
+  <span class='kw'>Timepoint</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>1</span>),
+  <span class='kw'>Setup</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>,<span class='fl'>1</span>),
+  <span class='kw'>vector_Affine</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='kw'>v1</span> <span class='kw'>=</span> <span class='no'>v1</span>, <span class='kw'>v2</span> <span class='kw'>=</span> <span class='no'>v2</span>))
+<span class='fu'>identical</span>(<span class='no'>good_res</span>, <span class='fu'>prod_affine_registration</span>(<span class='no'>x</span>)$<span class='no'>prod_affine</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># Both should be equal but solve uses approximations</span>
+<span class='fu'>identical</span>(<span class='fu'>solve</span>(<span class='no'>good_res</span>), <span class='fu'>prod_affine_registration</span>(<span class='no'>x</span>)$<span class='no'>prod_affine_inv</span><span class='kw'>[[</span><span class='fl'>1</span>]])</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

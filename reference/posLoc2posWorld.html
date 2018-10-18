@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a spot node
-To modify the mamut.xml file. — makeSpotNode • mamut2r</title>
+<title>Calculating the coordinates
+N.B.: pos_world = (3D-HASHING) x (CALIBRATION) x pos_local — posLoc2posWorld • mamut2r</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,10 +31,11 @@ To modify the mamut.xml file. — makeSpotNode • mamut2r</title>
 
 
 
-<meta property="og:title" content="Create a spot node
-To modify the mamut.xml file. — makeSpotNode" />
+<meta property="og:title" content="Calculating the coordinates
+N.B.: pos_world = (3D-HASHING) x (CALIBRATION) x pos_local — posLoc2posWorld" />
 
-<meta property="og:description" content="see also documentation here: https://cran.r-project.org/web/packages/xml2/vignettes/modification.html" />
+<meta property="og:description" content="Calculating the coordinates
+N.B.: pos_world = (3D-HASHING) x (CALIBRATION) x pos_local" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,32 +118,37 @@ To modify the mamut.xml file. — makeSpotNode" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a spot node
-To modify the mamut.xml file.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/marionlouveaux/mamut2r/blob/master/R/makeSpotNode.R'><code>R/makeSpotNode.R</code></a></small>
-    <div class="hidden name"><code>makeSpotNode.Rd</code></div>
+    <h1>Calculating the coordinates
+N.B.: pos_world = (3D-HASHING) x (CALIBRATION) x pos_local</h1>
+    <small class="dont-index">Source: <a href='https://github.com/marionlouveaux/mamut2r/blob/master/R/posLoc2posWorld.R'><code>R/posLoc2posWorld.R</code></a></small>
+    <div class="hidden name"><code>posLoc2posWorld.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>see also documentation here: https://cran.r-project.org/web/packages/xml2/vignettes/modification.html</p>
+    <p>Calculating the coordinates
+N.B.: pos_world = (3D-HASHING) x (CALIBRATION) x pos_local</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeSpotNode</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>posLoc2posWorld</span>(<span class='no'>pos_local</span>, <span class='no'>affTransform</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>A spot dataframe</p></td>
+      <th>pos_local</th>
+      <td><p>Coordinates in the local coordinates system of MaMuT Viewer (POSITION_X, POSITION_Y, POSITION_Z) in arbitrary units.</p></td>
+    </tr>
+    <tr>
+      <th>affTransform</th>
+      <td><p>4x4 affine transform from local to world coordinates.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a character</p>
+    <p>Coordinates corresponding to the .h5 raw data pixels</p>
     
 
   </div>

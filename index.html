@@ -53,7 +53,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/Vignette_MaMuT2R.html">Vignette MaMuT2R - getting started</a>
+      <a href="articles/vignette_fluo.html">Vignette mamut2r - fluorescence intensity</a>
+    </li>
+    <li>
+      <a href="articles/vignette_getting_started.html">Vignette mamut2r - getting started</a>
     </li>
   </ul>
 </li>
@@ -118,24 +121,28 @@
 </ul>
 <pre><code>brew install udunits</code></pre>
 </div>
-<div id="test-script" class="section level2">
+<div id="full-documentation-with-pkgdown" class="section level2">
 <h2 class="hasAnchor">
-<a href="#test-script" class="anchor"></a>Test script</h2>
+<a href="#full-documentation-with-pkgdown" class="anchor"></a>Full documentation with {pkgdown}</h2>
+<p>See full documentation created with {pkgdown} at <a href="https://marionlouveaux.github.io/mamut2r/" class="uri">https://marionlouveaux.github.io/mamut2r/</a></p>
+</div>
+<div id="getting-started" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-started" class="anchor"></a>Getting started</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(mamut2r)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">library</span>(cowplot)</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">library</span>(purrr)</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">library</span>(XML)</a></code></pre></div>
-</div>
-<div id="load--xml-mamut-file" class="section level2">
-<h2 class="hasAnchor">
-<a href="#load--xml-mamut-file" class="anchor"></a>Load .xml MaMuT file</h2>
+<div id="loading--xml-mamut-file" class="section level3">
+<h3 class="hasAnchor">
+<a href="#loading--xml-mamut-file" class="anchor"></a>Loading .xml MaMuT file</h3>
 <p>The mamut.xml file is loaded as a list in R using the xmlToList() function from the {XML} package.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">fileXML &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/XML/topics/xmlToList">xmlToList</a></span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"MaMuT_Parhyale_demo-mamut.xml"</span>, <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a></code></pre></div>
 </div>
-<div id="get-information-relative-to-either-nuclei-spots-or-lineages-tracks" class="section level2">
-<h2 class="hasAnchor">
-<a href="#get-information-relative-to-either-nuclei-spots-or-lineages-tracks" class="anchor"></a>Get information relative to either nuclei (= spots) or lineages (=tracks)</h2>
+<div id="getting-information-relative-to-either-nuclei-spots-or-lineages-tracks" class="section level3">
+<h3 class="hasAnchor">
+<a href="#getting-information-relative-to-either-nuclei-spots-or-lineages-tracks" class="anchor"></a>Getting information relative to either nuclei (= spots) or lineages (=tracks)</h3>
 <p>The MaMuT .xml file stores two type of objects, under two types of tags: the spots and the tracks. In the case of the study of the development of an organ, spots usually refer to nuclei and tracks to cell lineages. Here, Spots.as.dataframe() and Tracks.as.dataframe() extract information from the .xml file and format them as dataframes (more precisely as tibbles).</p>
 <p>Information regarding the spots (x, y, z location, ID…) are extracted using the Spots.as.dataframe and stored in a tibble.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">Spots_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/Spots.as.dataframe.html">Spots.as.dataframe</a></span>(fileXML)</a>
@@ -174,9 +181,9 @@
 <a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; # ... with 390 more rows, and 2 more variables: TRACK_ID &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; #   TRACK_INDEX &lt;chr&gt;</span></a></code></pre></div>
 </div>
-<div id="checking-tracks" class="section level2">
-<h2 class="hasAnchor">
-<a href="#checking-tracks" class="anchor"></a>Checking tracks</h2>
+<div id="checking-tracks" class="section level3">
+<h3 class="hasAnchor">
+<a href="#checking-tracks" class="anchor"></a>Checking tracks</h3>
 <p>Tracks are composed of nodes (the spots) and edges (between the spots). Source and target spots are respectively the origin and the end of an edge between two timepoints. checkTrack() checks the orientation of edges and ensure to always have the source spot in an earlier timepoint than the target spot. This is necessary for plotting the lineage trees afterwards with {ggraph}.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">Tracks_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/checkTrack.html">checkTrack</a></span>(Tracks_df, Spots_df)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">Tracks_df</a>
@@ -196,9 +203,9 @@
 <a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt; # ... with 390 more rows, and 4 more variables: TRACK_ID &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt; #   TRACK_INDEX &lt;chr&gt;, SPOT_SOURCE_FRAME &lt;dbl&gt;, SPOT_TARGET_FRAME &lt;dbl&gt;</span></a></code></pre></div>
 </div>
-<div id="merging-spots-and-tracks-information" class="section level2">
-<h2 class="hasAnchor">
-<a href="#merging-spots-and-tracks-information" class="anchor"></a>Merging spots and tracks information</h2>
+<div id="merging-spots-and-tracks-information" class="section level3">
+<h3 class="hasAnchor">
+<a href="#merging-spots-and-tracks-information" class="anchor"></a>Merging spots and tracks information</h3>
 <p>Spots dataframes can be enriched with information coming from the tracks using spots.and.tracks().</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">Spots_Tracks &lt;-<span class="st"> </span><span class="kw"><a href="reference/spots.and.tracks.html">spots.and.tracks</a></span>(Spots_df, Tracks_df)</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">Spots_Tracks</a>
@@ -218,9 +225,9 @@
 <a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; # ... with 431 more rows, and 4 more variables: POSITION_Y &lt;dbl&gt;,</span></a>
 <a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; #   FRAME &lt;chr&gt;, POSITION_Z &lt;dbl&gt;, TRACK_ID &lt;chr&gt;</span></a></code></pre></div>
 </div>
-<div id="lineage-tree" class="section level2">
-<h2 class="hasAnchor">
-<a href="#lineage-tree" class="anchor"></a>Lineage tree</h2>
+<div id="visualising-the-lineage-trees" class="section level3">
+<h3 class="hasAnchor">
+<a href="#visualising-the-lineage-trees" class="anchor"></a>Visualising the lineage trees</h3>
 <p>track2plot() allows to plot the lineage trees with a custom color code.<br>
 Tracks are identified by their ID.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">all_tracks &lt;-<span class="st"> </span><span class="kw">unique</span>(Tracks_df<span class="op">$</span>TRACK_ID)</a></code></pre></div>
@@ -244,6 +251,16 @@ Tracks are identified by their ID.</p>
 <a class="sourceLine" id="cb13-13" data-line-number="13">p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/cowplot/topics/plot_grid">plot_grid</a></span>( prow, legend, <span class="dt">rel_widths =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.3</span>))</a>
 <a class="sourceLine" id="cb13-14" data-line-number="14">p</a></code></pre></div>
 <p><img src="reference/figures/README-multipletracks-1.png" width="100%"></p>
+</div>
+</div>
+<div id="acknowledgements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
+<p>Many thanks to Dr. Jean-Yves Tinevez, John Bogovic, and Dr. Tobias Pietsch for their help on MaMuT and Big Data Viewer.</p>
+</div>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of conduct</h2>
 <p>Please note that the ‘mamut2r’ project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
@@ -275,7 +292,7 @@ Tracks are identified by their ID.</p>
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Marion Louveaux <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Marion Louveaux <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1794-3748" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" height="16"></a> </li>
 </ul>
 </div>
 
@@ -283,7 +300,7 @@ Tracks are identified by their ID.</p>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/marionlouveaux/mamut2r"><img src="https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://ci.appveyor.com/project/statnmap/mamut2r"><img src="https://ci.appveyor.com/api/projects/status/github/statnmap/mamut2r?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://ci.appveyor.com/project/statnmap/mamut2r"><img src="https://ci.appveyor.com/api/projects/status/smglbsvcjrl9ulri?svg=true" alt="Build status"></a></li>
 </ul>
 </div>
 </div>

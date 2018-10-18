@@ -81,7 +81,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Vignette_MaMuT2R.html">Vignette MaMuT2R - getting started</a>
+      <a href="../articles/vignette_fluo.html">Vignette mamut2r - fluorescence intensity</a>
+    </li>
+    <li>
+      <a href="../articles/vignette_getting_started.html">Vignette mamut2r - getting started</a>
     </li>
   </ul>
 </li>
@@ -174,6 +177,14 @@ Extracting fluorescence values in an .h5 file in the BigDataViewer format around
       </tr><tr>
         
         <td>
+          <p><code><a href="get_registration.html">get_registration()</a></code> </p>
+        </td>
+        <td><p>Get information relative to registration in ViewTransform node of Big Data Viewer files
+Registration based on affine transforms, one or several, written as a vector of 12 indices
+This vector can be transformed as a 4x4 matrix by adding 0,0,0,1 at the end of the vector and reading it by row.</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="heatmap2int.html">heatmap2int()</a></code> </p>
         </td>
         <td><p>Conversion of continuous variable to discrete integers for visualisation in MaMuT</p></td>
@@ -189,7 +200,7 @@ Extracting fluorescence values in an .h5 file in the BigDataViewer format around
           <p><code><a href="int2hours.html">int2hours()</a></code> </p>
         </td>
         <td><p>Convert an integer to hour minutes in digital format
-Assumes that integers (0, 1, 2) refers to 30 minutes timesteps (00:00, 00:30, 01:00)...</p></td>
+Assumes that integers (0, 1, 2) refers to 30 minutes timesteps (00:00, 00:30, 01:00)... Same function as in cellviz3d.</p></td>
       </tr><tr>
         
         <td>
@@ -202,7 +213,7 @@ To modify the mamut.xml file.</p></td>
         <td>
           <p><code><a href="mmFluo.html">mmFluo()</a></code> </p>
         </td>
-        <td><p>Calculate a mean and median fluorescent value for each cell</p></td>
+        <td><p>Calculate a mean and median fluorescent value for each spot/cell</p></td>
       </tr><tr>
         
         <td>
@@ -231,6 +242,25 @@ Update values of existing parameters and/or add the manual color parameter</p></
       </tr><tr>
         
         <td>
+          <p><code><a href="posLoc2posWorld.html">posLoc2posWorld()</a></code> </p>
+        </td>
+        <td><p>Calculating the coordinates
+N.B.: pos_world = (3D-HASHING) x (CALIBRATION) x pos_local</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="prod_affine_registration.html">prod_affine_registration()</a></code> </p>
+        </td>
+        <td><p>Product of affine transformations</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="read_ViewRegistration.html">read_ViewRegistration()</a></code> </p>
+        </td>
+        <td><p>Get information relative to registration in .xml Big Data Viewer files</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="spots.and.tracks.html">spots.and.tracks()</a></code> </p>
         </td>
         <td><p>Combining spots and tracks dataframes</p></td>
@@ -241,6 +271,12 @@ Update values of existing parameters and/or add the manual color parameter</p></
         </td>
         <td><p>Plotting tracks
 Plotting MaMuT tracks with custom color code</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="vect2mat.html">vect2mat()</a></code> </p>
+        </td>
+        <td><p>Takes a 12 coordinates vector and returns a 4x4 matrix</p></td>
       </tr>
     </tbody>
     </table>

@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a spot node
-To modify the mamut.xml file. — makeSpotNode • mamut2r</title>
+<title>Takes a 12 coordinates vector and returns a 4x4 matrix — vect2mat • mamut2r</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -31,10 +30,9 @@ To modify the mamut.xml file. — makeSpotNode • mamut2r</title>
 
 
 
-<meta property="og:title" content="Create a spot node
-To modify the mamut.xml file. — makeSpotNode" />
+<meta property="og:title" content="Takes a 12 coordinates vector and returns a 4x4 matrix — vect2mat" />
 
-<meta property="og:description" content="see also documentation here: https://cran.r-project.org/web/packages/xml2/vignettes/modification.html" />
+<meta property="og:description" content="Takes a 12 coordinates vector and returns a 4x4 matrix" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,34 +115,39 @@ To modify the mamut.xml file. — makeSpotNode" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a spot node
-To modify the mamut.xml file.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/marionlouveaux/mamut2r/blob/master/R/makeSpotNode.R'><code>R/makeSpotNode.R</code></a></small>
-    <div class="hidden name"><code>makeSpotNode.Rd</code></div>
+    <h1>Takes a 12 coordinates vector and returns a 4x4 matrix</h1>
+    <small class="dont-index">Source: <a href='https://github.com/marionlouveaux/mamut2r/blob/master/R/vect2mat.R'><code>R/vect2mat.R</code></a></small>
+    <div class="hidden name"><code>vect2mat.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>see also documentation here: https://cran.r-project.org/web/packages/xml2/vignettes/modification.html</p>
+    <p>Takes a 12 coordinates vector and returns a 4x4 matrix</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>makeSpotNode</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>vect2mat</span>(<span class='no'>affine_vect</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>A spot dataframe</p></td>
+      <th>affine_vect</th>
+      <td><p>affine transform vector with 12 indices. The vector store the “top” three rows for the 4x4 affine matrix, in a "row major" fashion.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a character</p>
+    <p>a 4x4 affine transform matrix, with the top three rows and a last row containing 0,0,0,1</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>vect2mat</span>(<span class='fl'>1</span>:<span class='fl'>12</span>)</div><div class='output co'>#&gt;      [,1] [,2] [,3] [,4]
+#&gt; [1,]    1    2    3    4
+#&gt; [2,]    5    6    7    8
+#&gt; [3,]    9   10   11   12
+#&gt; [4,]    0    0    0    1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -152,7 +155,9 @@ To modify the mamut.xml file.</h1>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
