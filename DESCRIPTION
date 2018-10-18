@@ -11,9 +11,10 @@ Description: Imports data coming from .xml files generated with
 License: GPL-3
 URL: https://github.com/marionlouveaux/mamut2r
 BugReports: https://github.com/marionlouveaux/mamut2r/issues
-Imports:
+Imports: 
+    cellviz3d,
     classInt,
-    dplyr,
+    dplyr (>= 0.7.6),
     ggplot2,
     ggraph,
     glue,
@@ -21,17 +22,19 @@ Imports:
     igraph,
     magrittr,
     purrr,
-    rhdf5 (>= 2.24.0),
+    rhdf5,
     stats,
     tibble,
     utils,
     viridis,
     xml2
-Suggests:
+Suggests: 
     cowplot,
+    ggridges,
     knitr,
     pkgdown,
     rmarkdown,
+    tidyr,
     XML
 VignetteBuilder:
     knitr
