@@ -9,6 +9,7 @@
 #' @param colNode_discrete Logical. discrete scale if TRUE, continuous otherwise. Default to FALSE e.g. continuous.
 #' @param breaks vector of levels used to plot discrete color legend with regards to colNode unique values. Only if colNode_discrete is TRUE
 #'
+#' @importFrom cellviz3d int2hours
 #' @importFrom dplyr enquo filter mutate pull select
 #' @importFrom ggplot2 aes
 #' @importFrom ggplot2 element_blank

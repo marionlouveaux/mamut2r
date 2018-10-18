@@ -11,11 +11,9 @@
 #' @param cubeSize half the length of the cube side length. By default the cube is 10x10x10 pixels.
 #' @param H5_path path to the H5 file used to create the mamut.xml file
 #'
-#' @importFrom rhdf5 h5read
-#' @importFrom rhdf5 h5closeAll
-#' @importFrom dplyr enquo
-#' @importFrom dplyr select
-#' @importFrom dplyr filter
+#' @importFrom rhdf5 h5closeAll h5read
+#' @importFrom dplyr enquo filter select
+#' @importFrom glue glue
 #'
 #' @return a list of length equal to the number of timepoints. For each timepoint, values of fluorescence around each spot location
 #' @export
@@ -23,7 +21,6 @@
 #' @examples
 
 getFluo <- function(H5_path, Spots_df, x_px = x_px, y_px = y_px, z_px = z_px, timepoint = FRAME, cubeSize = 5) {
-browser()
   x_px <- enquo(x_px)
   y_px <- enquo(y_px)
   z_px <- enquo(z_px)

@@ -1,4 +1,4 @@
-#' Calculate a mean and median fluorescent value for each cell
+#' Calculate a mean and median fluorescent value for each spot/cell
 #'
 #' @param Spots_df a dataframe containing the spots coordinates
 #' @param all_cells fluorescent values collected in a cube of a given size around each spot location

@@ -1,10 +1,13 @@
 #' Get information relative to registration in ViewTransform node of Big Data Viewer files
+#' Registration based on affine transforms, one or several, written as a vector of 12 indices
+#' This vector can be transformed as a 4x4 matrix by adding 0,0,0,1 at the end of the vector and reading it by row.
 #'
 #' @param Registration List of registration
 #' @param name name of the registration
 #'
 #' @importFrom dplyr mutate everything as_tibble rename select
 #' @importFrom purrr map_dfr
+#' @export
 
 get_registration <- function(Registration, name) {
   id_viewtransform <- which(names(Registration) == "ViewTransform")

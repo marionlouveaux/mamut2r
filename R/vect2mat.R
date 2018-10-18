@@ -7,9 +7,8 @@
 #'
 #' @examples
 #' vect2mat(1:12)
+
 vect2mat <- function(affine_vect) {
-  # mat_tmp <- matrix(data = affine_vect, nrow = 3, ncol = 4, byrow = TRUE)
-  # affine_mat <- rbind(mat_tmp, c(0,0,0,1))
-  affine_mat <- matrix(data = c(affine_vect, 0,0,0,1), nrow = 3, ncol = 4, byrow = TRUE)
+  affine_mat <- matrix(data = c(affine_vect, 0,0,0,1), nrow = 4, ncol = 4, byrow = TRUE)
   return(affine_mat)
 }

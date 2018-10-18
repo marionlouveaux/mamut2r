@@ -2,7 +2,7 @@
 % Please edit documentation in R/mmFluo.R
 \name{mmFluo}
 \alias{mmFluo}
-\title{Calculate a mean and median fluorescent value for each cell}
+\title{Calculate a mean and median fluorescent value for each spot/cell}
 \usage{
 mmFluo(Spots_df, all_cells)
 }
@@ -15,5 +15,5 @@ mmFluo(Spots_df, all_cells)
 a dataframe
 }
 \description{
-Calculate a mean and median fluorescent value for each cell
+Calculate a mean and median fluorescent value for each spot/cell
 }
