@@ -10,7 +10,6 @@
 #' @return a dataframe
 #' @export
 #'
-#' @examples
 countSpot <- function(Spots_df, timepoint) {
 
   timepoint <- enquo(timepoint)

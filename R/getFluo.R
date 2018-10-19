@@ -19,7 +19,6 @@
 #' @export
 #' @note Many thanks to Dr. Mike Smith for his help on this function.
 #'
-#' @examples
 
 getFluo <- function(H5_path, Spots_df, x_px = x_px, y_px = y_px, z_px = z_px, timepoint = FRAME, cubeSize = 5) {
   x_px <- enquo(x_px)

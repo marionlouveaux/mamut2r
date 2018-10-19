@@ -13,9 +13,7 @@
 #' @return a new .xml file
 #' @export
 #'
-#' @examples
 
-#NB: I should do the select based on the Spot and Edges features
 modifyXML <- function(MaMuTpath,
                       newFilename = "test.xml",
                       Spots_df) {

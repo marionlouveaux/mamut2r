@@ -11,7 +11,6 @@
 #' @return a dataframe
 #' @export
 #'
-#' @examples
 
 spots.and.tracks <- function(Spots_df, Tracks_df) {
 

@@ -7,7 +7,6 @@
 #' @return Coordinates corresponding to the .h5 raw data pixels
 #' @export
 #'
-#' @examples
 posLoc2posWorld <- function(pos_local, affTransform) {
   pos_local <- c(pos_local, 1) # we want to transform a point
   pos_world <- affTransform %*% pos_local

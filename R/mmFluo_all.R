@@ -6,7 +6,6 @@
 #' @return a dataframe
 #' @export
 #'
-#' @examples
 
 mmFluo_all <- function(Spots_df, all_cells) {
 

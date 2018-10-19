@@ -10,7 +10,6 @@
 #' @return a dataframe
 #' @export
 #'
-#' @examples
 
 heatmap2int <- function(Spots_df, my_var = fluoMean) {
   my_var <- enquo(my_var)

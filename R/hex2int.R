@@ -7,7 +7,6 @@
 #' @return an integer
 #' @export
 #'
-#' @examples
 
 hex2int <- function(x) {
   myRGBA <- c(col2rgb(x), 255)

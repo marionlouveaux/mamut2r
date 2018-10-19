@@ -6,7 +6,6 @@
 #'
 #' @return a string with the hour in digital format (HH:mm)
 #'
-#' @examples
 
 int2hours <- function(x) {
   Hours <- formatC(floor(x), width = 2, flag = "0")

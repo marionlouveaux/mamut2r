@@ -15,7 +15,6 @@
 #' @return dataframe with three new columns
 #' @export
 #'
-#' @examples
 add_px_loc <- function(Spots_df,
                        xres = 0.1625,
                        yres = 0.1625,

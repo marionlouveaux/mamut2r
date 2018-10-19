@@ -7,7 +7,6 @@
 #' @return a dataframe
 #' @export
 #'
-#' @examples
 
 mmFluo_wholeMovie <- function(Spots_df, all_cells) {
 

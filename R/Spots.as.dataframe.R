@@ -6,7 +6,6 @@
 #' @importFrom tibble as.tibble
 #'
 #' @export
-#' @examples
 #' @return Dataframe containing the spot ID, its name, its visibility, its radius, quality, source and position (x, y, z, t).
 
 

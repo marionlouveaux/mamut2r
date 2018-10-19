@@ -12,7 +12,6 @@
 #' @return a dataframe with reordered source and targets
 #' @export
 #'
-#' @examples
 
 checkTrack <- function(Tracks_df, Spots_df) {
   idFrame <- Spots_df %>%
