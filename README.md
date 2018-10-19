@@ -1,6 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) [![Build status](https://ci.appveyor.com/api/projects/status/smglbsvcjrl9ulri?svg=true)](https://ci.appveyor.com/project/statnmap/mamut2r)
+[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) [![Build status](https://ci.appveyor.com/api/projects/status/efpwpkqw79ks920o?svg=true)](https://ci.appveyor.com/project/marionlouveaux/mamut2r)
 
 mamut2r
 =======
@@ -23,15 +23,17 @@ You may need to install dependencies before:
 # rhdf5 (>= 2.24.0) on bioconductor is required
 install.packages("BiocManager")
 BiocManager::install("rhdf5", update = FALSE)
+
 # Other packages on CRAN
-to_install <- c("classInt", "cowplot", "dplyr", "ggplot2", "ggraph", "glue", "grDevices", "igraph", "knitr", "magrittr", "purrr", "rmarkdown", "stats", "tibble", "utils", "viridis", "XML", "xml2")
-for (i in to_install) {
-  message(paste("looking for ", i))
-  if (!requireNamespace(i)) {
-    message(paste("     installing", i))
-    install.packages(i)
+to_install <- c("classInt", "cowplot", "dplyr", "ggplot2", "ggraph", "ggridges", "glue", "grDevices", "igraph", "knitr", "magrittr", "pkgdown", "purrr", "rhdf5", "rmarkdown", "stats", "tibble", "tidyr", "utils", "viridis", "XML", "xml2")
+  for (i in to_install) {
+    message(paste("looking for ", i))
+    if (!requireNamespace(i)) {
+      message(paste("     installing", i))
+      install.packages(i)
+    }
+
   }
-}
 ```
 
 *For Linux and MacOS* To install {ggraph}, you will need "udunits".
@@ -48,6 +50,18 @@ Full documentation with {pkgdown}
 ---------------------------------
 
 See full documentation created with {pkgdown} at <https://marionlouveaux.github.io/mamut2r/>
+
+Open Rmd files used to build vignettes
+--------------------------------------
+
+You may need to install {cellviz3d}
+
+``` r
+devtools::install_github("marionlouveaux/cellviz3d")
+
+file.edit(system.file(file.path("doc", "vignette_fluo.Rmd"), package = "mamut2r"))
+file.edit(system.file(file.path("doc", "vignette_getting_started.Rmd"), package = "mamut2r"))
+```
 
 Getting started
 ---------------
@@ -207,7 +221,7 @@ p
 Acknowledgements
 ----------------
 
-Many thanks to Dr. Jean-Yves Tinevez, John Bogovic, and Dr. Tobias Pietsch for their help on MaMuT and Big Data Viewer.
+Many thanks to Dr. Jean-Yves Tinevez, John Bogovic, and Dr. Tobias Pietsch for their help on MaMuT and Big Data Viewer, and to Dr. Mike Smith for his help on the getFluo() function.
 
 Code of conduct
 ---------------

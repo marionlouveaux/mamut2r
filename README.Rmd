@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) [![Build status](https://ci.appveyor.com/api/projects/status/smglbsvcjrl9ulri?svg=true)](https://ci.appveyor.com/project/statnmap/mamut2r)
+[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) [![Build status](https://ci.appveyor.com/api/projects/status/efpwpkqw79ks920o?svg=true)](https://ci.appveyor.com/project/marionlouveaux/mamut2r)
 
 # mamut2r
 
@@ -163,7 +163,7 @@ p
 
 ## Acknowledgements
 
-Many thanks to Dr. Jean-Yves Tinevez, John Bogovic, and Dr. Tobias Pietsch for their help on MaMuT and Big Data Viewer. 
+Many thanks to Dr. Jean-Yves Tinevez, John Bogovic, and Dr. Tobias Pietsch for their help on MaMuT and Big Data Viewer, and to Dr. Mike Smith for his help on the getFluo() function.
 
 ## Code of conduct
 

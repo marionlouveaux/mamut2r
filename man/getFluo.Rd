@@ -30,3 +30,6 @@ a list of length equal to the number of timepoints. For each timepoint, values o
 Extracting fluorescence values
 Extracting fluorescence values in an .h5 file in the BigDataViewer format around given coordinates
 }
+\note{
+Many thanks to Dr. Mike Smith for his help on this function.
+}

@@ -17,6 +17,7 @@
 #'
 #' @return a list of length equal to the number of timepoints. For each timepoint, values of fluorescence around each spot location
 #' @export
+#' @note Many thanks to Dr. Mike Smith for his help on this function.
 #'
 #' @examples
 
