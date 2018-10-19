@@ -2,6 +2,6 @@ pandoc: '2.2'
 pkgdown: 1.1.0
 pkgdown_sha: ~
 articles:
-  vignette_fluo: vignette_fluo.html
-  vignette_getting_started: vignette_getting_started.html
+  A_getting_started: A_getting_started.html
+  B_fluo: B_fluo.html
 

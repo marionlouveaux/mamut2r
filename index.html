@@ -53,10 +53,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/vignette_fluo.html">Vignette mamut2r - fluorescence intensity</a>
+      <a href="articles/A_getting_started.html">Getting started</a>
     </li>
     <li>
-      <a href="articles/vignette_getting_started.html">Vignette mamut2r - getting started</a>
+      <a href="articles/B_fluo.html">Fluorescence intensity</a>
     </li>
   </ul>
 </li>
@@ -97,20 +97,22 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>{mamut2r} is only available on Github.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"marionlouveaux/mamut2r"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"marionlouveaux/mamut2r"</span>)</a></code></pre></div>
 <p>You may need to install dependencies before:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># rhdf5 (&gt;= 2.24.0) on bioconductor is required</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">install.packages</span>(<span class="st">"BiocManager"</span>)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">BiocManager<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/BiocManager/topics/install">install</a></span>(<span class="st">"rhdf5"</span>, <span class="dt">update =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># Other packages on CRAN</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">to_install &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"classInt"</span>, <span class="st">"cowplot"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"ggraph"</span>, <span class="st">"glue"</span>, <span class="st">"grDevices"</span>, <span class="st">"igraph"</span>, <span class="st">"knitr"</span>, <span class="st">"magrittr"</span>, <span class="st">"purrr"</span>, <span class="st">"rmarkdown"</span>, <span class="st">"stats"</span>, <span class="st">"tibble"</span>, <span class="st">"utils"</span>, <span class="st">"viridis"</span>, <span class="st">"XML"</span>, <span class="st">"xml2"</span>)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="cf">for</span> (i <span class="cf">in</span> to_install) {</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="kw">message</span>(<span class="kw">paste</span>(<span class="st">"looking for "</span>, i))</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">  <span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(i)) {</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">    <span class="kw">message</span>(<span class="kw">paste</span>(<span class="st">"     installing"</span>, i))</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">    <span class="kw">install.packages</span>(i)</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">  }</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">}</a></code></pre></div>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co"># Other packages on CRAN</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">to_install &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">"classInt"</span>, <span class="st">"cowplot"</span>, <span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"ggraph"</span>, <span class="st">"ggridges"</span>, <span class="st">"glue"</span>, <span class="st">"grDevices"</span>, <span class="st">"igraph"</span>, <span class="st">"knitr"</span>, <span class="st">"magrittr"</span>, <span class="st">"pkgdown"</span>, <span class="st">"purrr"</span>, <span class="st">"rhdf5"</span>, <span class="st">"rmarkdown"</span>, <span class="st">"stats"</span>, <span class="st">"tibble"</span>, <span class="st">"tidyr"</span>, <span class="st">"utils"</span>, <span class="st">"viridis"</span>, <span class="st">"XML"</span>, <span class="st">"xml2"</span>)</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">  <span class="cf">for</span> (i <span class="cf">in</span> to_install) {</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">    <span class="kw">message</span>(<span class="kw">paste</span>(<span class="st">"looking for "</span>, i))</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">    <span class="cf">if</span> (<span class="op">!</span><span class="kw">requireNamespace</span>(i)) {</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">      <span class="kw">message</span>(<span class="kw">paste</span>(<span class="st">"     installing"</span>, i))</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">      <span class="kw">install.packages</span>(i)</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">    }</a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">  }</a></code></pre></div>
 <p><em>For Linux and MacOS</em> To install {ggraph}, you will need “udunits”.</p>
 <ul>
 <li><em>Ubuntu:</em></li>
@@ -126,68 +128,55 @@
 <a href="#full-documentation-with-pkgdown" class="anchor"></a>Full documentation with {pkgdown}</h2>
 <p>See full documentation created with {pkgdown} at <a href="https://marionlouveaux.github.io/mamut2r/" class="uri">https://marionlouveaux.github.io/mamut2r/</a></p>
 </div>
+<div id="open-rmd-files-used-to-build-vignettes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#open-rmd-files-used-to-build-vignettes" class="anchor"></a>Open Rmd files used to build vignettes</h2>
+<p>You may need to install {cellviz3d}</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"marionlouveaux/cellviz3d"</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">file.edit</span>(<span class="kw">system.file</span>(<span class="kw">file.path</span>(<span class="st">"doc"</span>, <span class="st">"vignette_fluo.Rmd"</span>), <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">file.edit</span>(<span class="kw">system.file</span>(<span class="kw">file.path</span>(<span class="st">"doc"</span>, <span class="st">"vignette_getting_started.Rmd"</span>), <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a></code></pre></div>
+</div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">library</span>(mamut2r)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">library</span>(cowplot)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">library</span>(purrr)</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">library</span>(XML)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(mamut2r)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">library</span>(cowplot)</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="kw">library</span>(purrr)</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">library</span>(XML)</a></code></pre></div>
 <div id="loading--xml-mamut-file" class="section level3">
 <h3 class="hasAnchor">
 <a href="#loading--xml-mamut-file" class="anchor"></a>Loading .xml MaMuT file</h3>
 <p>The mamut.xml file is loaded as a list in R using the xmlToList() function from the {XML} package.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">fileXML &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/XML/topics/xmlToList">xmlToList</a></span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"MaMuT_Parhyale_demo-mamut.xml"</span>, <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">fileXML &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/XML/topics/xmlToList">xmlToList</a></span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"MaMuT_Parhyale_demo-mamut.xml"</span>, <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a></code></pre></div>
 </div>
 <div id="getting-information-relative-to-either-nuclei-spots-or-lineages-tracks" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-information-relative-to-either-nuclei-spots-or-lineages-tracks" class="anchor"></a>Getting information relative to either nuclei (= spots) or lineages (=tracks)</h3>
 <p>The MaMuT .xml file stores two type of objects, under two types of tags: the spots and the tracks. In the case of the study of the development of an organ, spots usually refer to nuclei and tracks to cell lineages. Here, Spots.as.dataframe() and Tracks.as.dataframe() extract information from the .xml file and format them as dataframes (more precisely as tibbles).</p>
 <p>Information regarding the spots (x, y, z location, ID…) are extracted using the Spots.as.dataframe and stored in a tibble.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">Spots_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/Spots.as.dataframe.html">Spots.as.dataframe</a></span>(fileXML)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">Spots_df</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; # A tibble: 441 x 11</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;       ID name  VISIBILITY RADIUS QUALITY SOURCE_ID POSITION_T POSITION_X</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;  1  2115 ID21… 1            14.6 -1.0    0                  0       834.</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;  2  3077 ID30… 1            14.6 -1.0    0                  0       788.</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;  3  1542 ID15… 1            14.6 -1.0    0                  0       865.</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;  4  3398 ID33… 1            14.6 -1.0    0                  0       945.</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;  5  2569 ID25… 1            14.6 -1.0    0                  0       888.</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  6  1930 ID19… 1            14.6 -1.0    0                  0       836.</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  7  2956 ID29… 1            14.6 -1.0    0                  0       788.</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  8  3597 ID35… 1            14.6 -1.0    0                  0      1086.</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt;  9   337 ID337 1            14.6 -1.0    0                  0      1046.</span></a>
-<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt; 10  3025 ID30… 1            14.6 -1.0    0                  0       817.</span></a>
-<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt; # ... with 431 more rows, and 3 more variables: POSITION_Y &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt; #   FRAME &lt;chr&gt;, POSITION_Z &lt;dbl&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">Spots_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/Spots.as.dataframe.html">Spots.as.dataframe</a></span>(fileXML)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">Spots_df</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; # A tibble: 441 x 11</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;       ID name  VISIBILITY RADIUS QUALITY SOURCE_ID POSITION_T POSITION_X</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;  1  2115 ID21… 1            14.6 -1.0    0                  0       834.</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt;  2  3077 ID30… 1            14.6 -1.0    0                  0       788.</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt;  3  1542 ID15… 1            14.6 -1.0    0                  0       865.</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt;  4  3398 ID33… 1            14.6 -1.0    0                  0       945.</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt;  5  2569 ID25… 1            14.6 -1.0    0                  0       888.</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;  6  1930 ID19… 1            14.6 -1.0    0                  0       836.</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt;  7  2956 ID29… 1            14.6 -1.0    0                  0       788.</span></a>
+<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt;  8  3597 ID35… 1            14.6 -1.0    0                  0      1086.</span></a>
+<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt;  9   337 ID337 1            14.6 -1.0    0                  0      1046.</span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; 10  3025 ID30… 1            14.6 -1.0    0                  0       817.</span></a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; # ... with 431 more rows, and 3 more variables: POSITION_Y &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; #   FRAME &lt;chr&gt;, POSITION_Z &lt;dbl&gt;</span></a></code></pre></div>
 <p>Information regarding the tracks (ID of source and target spots, track ID…) are extracted using the Tracks.as.dataframe and stored in a tibble.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">Tracks_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/Tracks.as.dataframe.html">Tracks.as.dataframe</a></span>(fileXML)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">Tracks_df</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; # A tibble: 400 x 8</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt;    SPOT_SOURCE_ID SPOT_TARGET_ID LINK_COST VELOCITY DISPLACEMENT TRACK_NAME</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co">#&gt;             &lt;int&gt;          &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;     </span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;  1            135            142 103.6346…     5.81         5.81 Track_1   </span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt;  2            179            182 -1.0         18.6         18.6  Track_1   </span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt;  3            183            184 -1.0         14.6         14.6  Track_1   </span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt;  4            182            183 -1.0         14.6         14.6  Track_1   </span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt;  5            142            179 -1.0          7.20         7.20 Track_1   </span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt;  6            122            129 29.60479…     4.11         4.11 Track_1   </span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt;  7             96            116 42.20738…     2.55         2.55 Track_1   </span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13"><span class="co">#&gt;  8            116            122 52.23397…     5.70         5.70 Track_1   </span></a>
-<a class="sourceLine" id="cb8-14" data-line-number="14"><span class="co">#&gt;  9            129            135 30.78595…     3.60         3.60 Track_1   </span></a>
-<a class="sourceLine" id="cb8-15" data-line-number="15"><span class="co">#&gt; 10            215            222 56.26781…    14.7         14.7  Track_2   </span></a>
-<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="co">#&gt; # ... with 390 more rows, and 2 more variables: TRACK_ID &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="co">#&gt; #   TRACK_INDEX &lt;chr&gt;</span></a></code></pre></div>
-</div>
-<div id="checking-tracks" class="section level3">
-<h3 class="hasAnchor">
-<a href="#checking-tracks" class="anchor"></a>Checking tracks</h3>
-<p>Tracks are composed of nodes (the spots) and edges (between the spots). Source and target spots are respectively the origin and the end of an edge between two timepoints. checkTrack() checks the orientation of edges and ensure to always have the source spot in an earlier timepoint than the target spot. This is necessary for plotting the lineage trees afterwards with {ggraph}.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">Tracks_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/checkTrack.html">checkTrack</a></span>(Tracks_df, Spots_df)</a>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">Tracks_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/Tracks.as.dataframe.html">Tracks.as.dataframe</a></span>(fileXML)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">Tracks_df</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; # A tibble: 400 x 10</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; # A tibble: 400 x 8</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt;    SPOT_SOURCE_ID SPOT_TARGET_ID LINK_COST VELOCITY DISPLACEMENT TRACK_NAME</span></a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;             &lt;int&gt;          &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;     </span></a>
 <a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt;  1            135            142 103.6346…     5.81         5.81 Track_1   </span></a>
@@ -200,56 +189,78 @@
 <a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt;  8            116            122 52.23397…     5.70         5.70 Track_1   </span></a>
 <a class="sourceLine" id="cb9-14" data-line-number="14"><span class="co">#&gt;  9            129            135 30.78595…     3.60         3.60 Track_1   </span></a>
 <a class="sourceLine" id="cb9-15" data-line-number="15"><span class="co">#&gt; 10            215            222 56.26781…    14.7         14.7  Track_2   </span></a>
-<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt; # ... with 390 more rows, and 4 more variables: TRACK_ID &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt; #   TRACK_INDEX &lt;chr&gt;, SPOT_SOURCE_FRAME &lt;dbl&gt;, SPOT_TARGET_FRAME &lt;dbl&gt;</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="co">#&gt; # ... with 390 more rows, and 2 more variables: TRACK_ID &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="co">#&gt; #   TRACK_INDEX &lt;chr&gt;</span></a></code></pre></div>
+</div>
+<div id="checking-tracks" class="section level3">
+<h3 class="hasAnchor">
+<a href="#checking-tracks" class="anchor"></a>Checking tracks</h3>
+<p>Tracks are composed of nodes (the spots) and edges (between the spots). Source and target spots are respectively the origin and the end of an edge between two timepoints. checkTrack() checks the orientation of edges and ensure to always have the source spot in an earlier timepoint than the target spot. This is necessary for plotting the lineage trees afterwards with {ggraph}.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">Tracks_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/checkTrack.html">checkTrack</a></span>(Tracks_df, Spots_df)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">Tracks_df</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; # A tibble: 400 x 10</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt;    SPOT_SOURCE_ID SPOT_TARGET_ID LINK_COST VELOCITY DISPLACEMENT TRACK_NAME</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt;             &lt;int&gt;          &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;     </span></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;  1            135            142 103.6346…     5.81         5.81 Track_1   </span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt;  2            179            182 -1.0         18.6         18.6  Track_1   </span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt;  3            183            184 -1.0         14.6         14.6  Track_1   </span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt;  4            182            183 -1.0         14.6         14.6  Track_1   </span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt;  5            142            179 -1.0          7.20         7.20 Track_1   </span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt;  6            122            129 29.60479…     4.11         4.11 Track_1   </span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt;  7             96            116 42.20738…     2.55         2.55 Track_1   </span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt;  8            116            122 52.23397…     5.70         5.70 Track_1   </span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt;  9            129            135 30.78595…     3.60         3.60 Track_1   </span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; 10            215            222 56.26781…    14.7         14.7  Track_2   </span></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; # ... with 390 more rows, and 4 more variables: TRACK_ID &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; #   TRACK_INDEX &lt;chr&gt;, SPOT_SOURCE_FRAME &lt;dbl&gt;, SPOT_TARGET_FRAME &lt;dbl&gt;</span></a></code></pre></div>
 </div>
 <div id="merging-spots-and-tracks-information" class="section level3">
 <h3 class="hasAnchor">
 <a href="#merging-spots-and-tracks-information" class="anchor"></a>Merging spots and tracks information</h3>
 <p>Spots dataframes can be enriched with information coming from the tracks using spots.and.tracks().</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">Spots_Tracks &lt;-<span class="st"> </span><span class="kw"><a href="reference/spots.and.tracks.html">spots.and.tracks</a></span>(Spots_df, Tracks_df)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">Spots_Tracks</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt; # A tibble: 441 x 12</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt;       ID name  VISIBILITY RADIUS QUALITY SOURCE_ID POSITION_T POSITION_X</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;  1  2115 ID21… 1            14.6 -1.0    0                  0       834.</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt;  2  3077 ID30… 1            14.6 -1.0    0                  0       788.</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt;  3  1542 ID15… 1            14.6 -1.0    0                  0       865.</span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt;  4  3398 ID33… 1            14.6 -1.0    0                  0       945.</span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt;  5  2569 ID25… 1            14.6 -1.0    0                  0       888.</span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt;  6  1930 ID19… 1            14.6 -1.0    0                  0       836.</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt;  7  2956 ID29… 1            14.6 -1.0    0                  0       788.</span></a>
-<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co">#&gt;  8  3597 ID35… 1            14.6 -1.0    0                  0      1086.</span></a>
-<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="co">#&gt;  9   337 ID337 1            14.6 -1.0    0                  0      1046.</span></a>
-<a class="sourceLine" id="cb10-15" data-line-number="15"><span class="co">#&gt; 10  3025 ID30… 1            14.6 -1.0    0                  0       817.</span></a>
-<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="co">#&gt; # ... with 431 more rows, and 4 more variables: POSITION_Y &lt;dbl&gt;,</span></a>
-<a class="sourceLine" id="cb10-17" data-line-number="17"><span class="co">#&gt; #   FRAME &lt;chr&gt;, POSITION_Z &lt;dbl&gt;, TRACK_ID &lt;chr&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">Spots_Tracks &lt;-<span class="st"> </span><span class="kw"><a href="reference/spots.and.tracks.html">spots.and.tracks</a></span>(Spots_df, Tracks_df)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">Spots_Tracks</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co">#&gt; # A tibble: 441 x 12</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co">#&gt;       ID name  VISIBILITY RADIUS QUALITY SOURCE_ID POSITION_T POSITION_X</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;      &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="co">#&gt;  1  2115 ID21… 1            14.6 -1.0    0                  0       834.</span></a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt;  2  3077 ID30… 1            14.6 -1.0    0                  0       788.</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt;  3  1542 ID15… 1            14.6 -1.0    0                  0       865.</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt;  4  3398 ID33… 1            14.6 -1.0    0                  0       945.</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt;  5  2569 ID25… 1            14.6 -1.0    0                  0       888.</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt;  6  1930 ID19… 1            14.6 -1.0    0                  0       836.</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt;  7  2956 ID29… 1            14.6 -1.0    0                  0       788.</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt;  8  3597 ID35… 1            14.6 -1.0    0                  0      1086.</span></a>
+<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="co">#&gt;  9   337 ID337 1            14.6 -1.0    0                  0      1046.</span></a>
+<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="co">#&gt; 10  3025 ID30… 1            14.6 -1.0    0                  0       817.</span></a>
+<a class="sourceLine" id="cb11-16" data-line-number="16"><span class="co">#&gt; # ... with 431 more rows, and 4 more variables: POSITION_Y &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb11-17" data-line-number="17"><span class="co">#&gt; #   FRAME &lt;chr&gt;, POSITION_Z &lt;dbl&gt;, TRACK_ID &lt;chr&gt;</span></a></code></pre></div>
 </div>
 <div id="visualising-the-lineage-trees" class="section level3">
 <h3 class="hasAnchor">
 <a href="#visualising-the-lineage-trees" class="anchor"></a>Visualising the lineage trees</h3>
 <p>track2plot() allows to plot the lineage trees with a custom color code.<br>
 Tracks are identified by their ID.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">all_tracks &lt;-<span class="st"> </span><span class="kw">unique</span>(Tracks_df<span class="op">$</span>TRACK_ID)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">all_tracks &lt;-<span class="st"> </span><span class="kw">unique</span>(Tracks_df<span class="op">$</span>TRACK_ID)</a></code></pre></div>
 <p>To plot one track:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="reference/track2plot.html">track2plot</a></span>(<span class="dt">track =</span> <span class="st">"1"</span>, Tracks_df, Spots_Tracks,</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">           <span class="dt">colNode =</span> FRAME, <span class="dt">colYaxis =</span> <span class="st">"black"</span>, <span class="dt">colNode_discrete =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="reference/track2plot.html">track2plot</a></span>(<span class="dt">track =</span> <span class="st">"1"</span>, Tracks_df, Spots_Tracks,</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">           <span class="dt">colNode =</span> FRAME, <span class="dt">colYaxis =</span> <span class="st">"black"</span>, <span class="dt">colNode_discrete =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-onetrack-1.png" width="100%"></p>
 <p>To plot the first six tracks:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">trackset &lt;-<span class="st"> </span>all_tracks[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">nbrow &lt;-<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="co">#display y axis only for plots on the left</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">colYaxis_pattern &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">"black"</span>, </a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">                          <span class="kw">rep</span>(<span class="st">"white"</span>, (<span class="kw">ceiling</span>(<span class="kw">length</span>(trackset)<span class="op">/</span>nbrow)<span class="op">-</span><span class="dv">1</span>) ) ), nbrow) </a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">colYaxis &lt;-<span class="st"> </span>colYaxis_pattern[<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(trackset)]</a>
-<a class="sourceLine" id="cb13-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb13-8" data-line-number="8">all_layouts &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map2">map2</a></span>(trackset, colYaxis,</a>
-<a class="sourceLine" id="cb13-9" data-line-number="9">                    <span class="op">~</span><span class="kw"><a href="reference/track2plot.html">track2plot</a></span>(.x, Tracks_df, Spots_Tracks, <span class="dt">colNode =</span> TRACK_ID, <span class="dt">colYaxis =</span> .y, <span class="dt">colNode_discrete=</span><span class="ot">TRUE</span>, <span class="dt">breaks =</span> <span class="kw">unique</span>(trackset)))</a>
-<a class="sourceLine" id="cb13-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb13-11" data-line-number="11">prow &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/cowplot/topics/plot_grid">plot_grid</a></span>(<span class="dt">plotlist =</span> all_layouts, <span class="dt">nrow =</span> nbrow)</a>
-<a class="sourceLine" id="cb13-12" data-line-number="12">legend &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/cowplot/topics/get_legend">get_legend</a></span>(all_layouts[[<span class="dv">1</span>]]<span class="op">+</span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">"right"</span>))</a>
-<a class="sourceLine" id="cb13-13" data-line-number="13">p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/cowplot/topics/plot_grid">plot_grid</a></span>( prow, legend, <span class="dt">rel_widths =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.3</span>))</a>
-<a class="sourceLine" id="cb13-14" data-line-number="14">p</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">trackset &lt;-<span class="st"> </span>all_tracks[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">nbrow &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#display y axis only for plots on the left</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">colYaxis_pattern &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">"black"</span>, </a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">                          <span class="kw">rep</span>(<span class="st">"white"</span>, (<span class="kw">ceiling</span>(<span class="kw">length</span>(trackset)<span class="op">/</span>nbrow)<span class="op">-</span><span class="dv">1</span>) ) ), nbrow) </a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">colYaxis &lt;-<span class="st"> </span>colYaxis_pattern[<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(trackset)]</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">all_layouts &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/purrr/topics/map2">map2</a></span>(trackset, colYaxis,</a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">                    <span class="op">~</span><span class="kw"><a href="reference/track2plot.html">track2plot</a></span>(.x, Tracks_df, Spots_Tracks, <span class="dt">colNode =</span> TRACK_ID, <span class="dt">colYaxis =</span> .y, <span class="dt">colNode_discrete=</span><span class="ot">TRUE</span>, <span class="dt">breaks =</span> <span class="kw">unique</span>(trackset)))</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">prow &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/cowplot/topics/plot_grid">plot_grid</a></span>(<span class="dt">plotlist =</span> all_layouts, <span class="dt">nrow =</span> nbrow)</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">legend &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/cowplot/topics/get_legend">get_legend</a></span>(all_layouts[[<span class="dv">1</span>]]<span class="op">+</span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">"right"</span>))</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">p &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/cowplot/topics/plot_grid">plot_grid</a></span>( prow, legend, <span class="dt">rel_widths =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">.3</span>))</a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">p</a></code></pre></div>
 <p><img src="reference/figures/README-multipletracks-1.png" width="100%"></p>
 </div>
 </div>
