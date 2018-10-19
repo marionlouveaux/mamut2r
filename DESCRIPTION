@@ -1,12 +1,17 @@
 Package: mamut2r
 Title: Import of MaMuT xml files into R
-Version: 0.0.2
+Version: 0.0.2.9000
 Authors@R:
-    person(given = "Marion",
-           family = "Louveaux",
-           role = c("aut", "cre"),
-           email = "marion.louveaux@gmail.com",
-           comment = c(ORCID = "0000-0002-1794-3748"))
+    c(person(given = "Marion",
+             family = "Louveaux",
+             role = c("aut", "cre"),
+             email = "marion.louveaux@gmail.com",
+             comment = c(ORCID = "0000-0002-1794-3748")),
+      person(given = "Sébastien",
+             family = "Rochette",
+             role = "aut",
+             email = "sebastien@thinkr.fr",
+             comment = c(ORCID = "0000-0002-1565-9313")))
 Description: Imports data coming from .xml files generated with
     the Fiji MaMuT plugin for lineage and tracking of biological objects.
 License: GPL-3
