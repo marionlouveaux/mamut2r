@@ -1,10 +1,10 @@
 ---
-title: "Vignette mamut2r - getting started"
+title: "Getting started"
 author: "Marion Louveaux"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette MaMuT2R - getting started}
+  %\VignetteIndexEntry{Getting started}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 

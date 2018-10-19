@@ -12,7 +12,6 @@ Description: Imports data coming from .xml files generated with
 License: GPL-3
 URL: https://github.com/marionlouveaux/mamut2r
 BugReports: https://github.com/marionlouveaux/mamut2r/issues
-Remotes: marionlouveaux/cellviz3d
 Imports: 
     classInt,
     dplyr (>= 0.7.6),
@@ -40,6 +39,8 @@ Suggests:
     XML
 VignetteBuilder:
     knitr
+Remotes: 
+    marionlouveaux/cellviz3d
 biocViews: rhdf5
 Encoding: UTF-8
 LazyData: true

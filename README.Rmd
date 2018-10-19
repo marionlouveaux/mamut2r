@@ -32,15 +32,17 @@ You may need to install dependencies before:
 # rhdf5 (>= 2.24.0) on bioconductor is required
 install.packages("BiocManager")
 BiocManager::install("rhdf5", update = FALSE)
+
 # Other packages on CRAN
-to_install <- c("classInt", "cowplot", "dplyr", "ggplot2", "ggraph", "glue", "grDevices", "igraph", "knitr", "magrittr", "purrr", "rmarkdown", "stats", "tibble", "utils", "viridis", "XML", "xml2")
-for (i in to_install) {
-  message(paste("looking for ", i))
-  if (!requireNamespace(i)) {
-    message(paste("     installing", i))
-    install.packages(i)
+to_install <- c("classInt", "cowplot", "dplyr", "ggplot2", "ggraph", "ggridges", "glue", "grDevices", "igraph", "knitr", "magrittr", "pkgdown", "purrr", "rhdf5", "rmarkdown", "stats", "tibble", "tidyr", "utils", "viridis", "XML", "xml2")
+  for (i in to_install) {
+    message(paste("looking for ", i))
+    if (!requireNamespace(i)) {
+      message(paste("     installing", i))
+      install.packages(i)
+    }
+
   }
-}
 ```
 
 *For Linux and MacOS*
@@ -59,6 +61,17 @@ brew install udunits
 ## Full documentation with {pkgdown}
 
 See full documentation created with {pkgdown} at https://marionlouveaux.github.io/mamut2r/
+
+## Open Rmd files used to build vignettes
+
+You may need to install {cellviz3d}
+```{r, eval = FALSE}
+devtools::install_github("marionlouveaux/cellviz3d")
+
+file.edit(system.file(file.path("doc", "vignette_fluo.Rmd"), package = "mamut2r"))
+file.edit(system.file(file.path("doc", "vignette_getting_started.Rmd"), package = "mamut2r"))
+```
+
 
 
 ## Getting started
