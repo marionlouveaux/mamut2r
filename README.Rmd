@@ -12,11 +12,17 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) [![Build status](https://ci.appveyor.com/api/projects/status/efpwpkqw79ks920o?svg=true)](https://ci.appveyor.com/project/marionlouveaux/mamut2r)
+[![Travis build status](https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master)](https://travis-ci.org/marionlouveaux/mamut2r) [![Build status](https://ci.appveyor.com/api/projects/status/efpwpkqw79ks920o?svg=true)](https://ci.appveyor.com/project/marionlouveaux/mamut2r) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1467431.svg)](https://doi.org/10.5281/zenodo.1467431)
 
 # mamut2r
 
 The goal of {mamut2r} is to imports data coming from .xml files generated with the Fiji MaMuT plugin for lineage and tracking of biological objects. {mamut2r} also allows to create lineage plots.
+
+## How to cite
+
+To cite {mamut2r}, call the R built-in command `citation("mamut2r")`.   
+
+> Marion Louveaux, & Sébastien Rochette. (2018, October 19). marionlouveaux/mamut2r: mamut2r: a R package to import and visualize xml files from the MaMuT Fiji plugin (Version v0.0.2). Zenodo. http://doi.org/10.5281/zenodo.1467431
 
 ## Installation
 
