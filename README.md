@@ -54,10 +54,11 @@ See full documentation created with {pkgdown} at <https://marionlouveaux.github.
 Open Rmd files used to build vignettes
 --------------------------------------
 
-You may need to install {cellviz3d}
+You may need to install {cellviz3d}, and you will need to install mamut2r with the vignettes.
 
 ``` r
 devtools::install_github("marionlouveaux/cellviz3d")
+devtools::install_github("marionlouveaux/mamut2r", build_vignettes = TRUE)
 
 file.edit(system.file(file.path("doc", "vignette_fluo.Rmd"), package = "mamut2r"))
 file.edit(system.file(file.path("doc", "vignette_getting_started.Rmd"), package = "mamut2r"))
