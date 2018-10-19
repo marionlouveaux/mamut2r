@@ -131,11 +131,12 @@
 <div id="open-rmd-files-used-to-build-vignettes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#open-rmd-files-used-to-build-vignettes" class="anchor"></a>Open Rmd files used to build vignettes</h2>
-<p>You may need to install {cellviz3d}</p>
+<p>You may need to install {cellviz3d}, and you will need to install mamut2r with the vignettes.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"marionlouveaux/cellviz3d"</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">file.edit</span>(<span class="kw">system.file</span>(<span class="kw">file.path</span>(<span class="st">"doc"</span>, <span class="st">"vignette_fluo.Rmd"</span>), <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">file.edit</span>(<span class="kw">system.file</span>(<span class="kw">file.path</span>(<span class="st">"doc"</span>, <span class="st">"vignette_getting_started.Rmd"</span>), <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb5-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"marionlouveaux/mamut2r"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">file.edit</span>(<span class="kw">system.file</span>(<span class="kw">file.path</span>(<span class="st">"doc"</span>, <span class="st">"vignette_fluo.Rmd"</span>), <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw">file.edit</span>(<span class="kw">system.file</span>(<span class="kw">file.path</span>(<span class="st">"doc"</span>, <span class="st">"vignette_getting_started.Rmd"</span>), <span class="dt">package =</span> <span class="st">"mamut2r"</span>))</a></code></pre></div>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
@@ -267,7 +268,7 @@ Tracks are identified by their ID.</p>
 <div id="acknowledgements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
-<p>Many thanks to Dr. Jean-Yves Tinevez, John Bogovic, and Dr. Tobias Pietsch for their help on MaMuT and Big Data Viewer.</p>
+<p>Many thanks to Dr. Jean-Yves Tinevez, John Bogovic, and Dr. Tobias Pietsch for their help on MaMuT and Big Data Viewer, and to Dr. Mike Smith for his help on the getFluo() function.</p>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
@@ -311,7 +312,7 @@ Tracks are identified by their ID.</p>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/marionlouveaux/mamut2r"><img src="https://travis-ci.org/marionlouveaux/mamut2r.svg?branch=master" alt="Travis build status"></a></li>
-<li><a href="https://ci.appveyor.com/project/statnmap/mamut2r"><img src="https://ci.appveyor.com/api/projects/status/smglbsvcjrl9ulri?svg=true" alt="Build status"></a></li>
+<li><a href="https://ci.appveyor.com/project/marionlouveaux/mamut2r"><img src="https://ci.appveyor.com/api/projects/status/efpwpkqw79ks920o?svg=true" alt="Build status"></a></li>
 </ul>
 </div>
 </div>
