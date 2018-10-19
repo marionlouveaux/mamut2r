@@ -1,10 +1,10 @@
 ---
-title: "Vignette mamut2r - fluorescence intensity"
+title: "Fluorescence intensity"
 author: "Marion Louveaux"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Fluorescence intensity}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -23,6 +23,16 @@ In this vignette, we will retrieve fluorescence intensity values around the posi
 To acces the fluorescence intensity values in the Big Data Viewer .h5 file, we need to use the {rhdf5} library.    
 
 ```{r}
+if (isTRUE(!requireNamespace("cellviz3d"))) {
+  stop("Please install {cellviz3d} using:\n",
+       " devtools::install_github(\"marionlouveaux/cellviz3d\")")
+  # devtools::install_github("marionlouveaux/cellviz3d")
+}
+if (isTRUE(!requireNamespace("rhdf5"))) {
+  stop("Please install {rhdf5} using:\n",
+       "install.packages(\"BiocManager\"); ",
+       "BiocManager::install(\"rhdf5\")")
+}
 library(cellviz3d)
 library(dplyr)
 library(ggplot2)
@@ -35,13 +45,14 @@ library(tidyr)
 
 To install {rhdf5}:
 ```{r, eval=FALSE}
-source("http://bioconductor.org/biocLite.R")
-biocLite("rhdf5")
+# source("http://bioconductor.org/biocLite.R")
+# biocLite("rhdf5")
+install.packages("BiocManager")
+BiocManager::install("rhdf5")
 ```
 To install {cellviz3d}:
-```{r libdev, warning = FALSE, message = FALSE, eval=FALSE}
-# devtools::install_github("marionlouveaux/cellviz3d")
-library(cellviz3d)
+```{r, eval=FALSE}
+devtools::install_github("marionlouveaux/cellviz3d")
 ```
 
 

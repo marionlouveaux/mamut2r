@@ -32,16 +32,20 @@ usethis::use_code_of_conduct()
 usethis::use_news_md()
 usethis::use_appveyor()
 
-# devtools::install_bioc("rhdf5")
-source("https://bioconductor.org/biocLite.R")
-biocLite("rhdf5", suppressUpdates = TRUE)
+# Attachments
+install.packages("BiocManager")
+BiocManager::install("rhdf5")
+devtools::install_github("marionlouveaux/cellviz3d")
 # usethis::use_roxygen_md()
 # devtools::install_github("ThinkR-open/attachment")
-attachment::att_to_description(extra.suggests = "pkgdown") #pkg_ignore = "rhdf5"
+attachment::att_to_description(extra.suggests = "pkgdown",
+                               pkg_ignore = c("BiocManager", "devtools"))
 attachment::create_dependencies_file(field = c("Depends", "Imports", "Suggests"))
 
 # Run Vignette
+devtools::clean_vignettes()
 devtools::build_vignettes()
 
 # Test pkgdown
 pkgdown::build_site()
+
