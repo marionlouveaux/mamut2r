@@ -1,6 +1,6 @@
 Package: mamut2r
 Title: Import of MaMuT xml files into R
-Version: 0.0.1
+Version: 0.0.2
 Authors@R:
     person(given = "Marion",
            family = "Louveaux",

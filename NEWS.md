@@ -1,4 +1,6 @@
-# mamut2r 0.0.1.9000
+# mamut2r 0.0.2
+* Cleaned examples
+* Zenodo release
 
 # mamut2r 0.0.1
 
