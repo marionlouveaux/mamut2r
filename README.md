@@ -12,7 +12,7 @@ How to cite
 
 To cite {mamut2r}, call the R built-in command `citation("mamut2r")`.
 
-> Marion Louveaux, & Sébastien Rochette. (2018, October 19). marionlouveaux/mamut2r: mamut2r: a R package to import and visualize xml files from the MaMuT Fiji plugin (Version v0.0.2). Zenodo. <http://doi.org/10.5281/zenodo.1467431>
+> Marion Louveaux, & Sébastien Rochette. (2018, October 19). mamut2r: a R package to import and visualize xml files from the MaMuT Fiji plugin (Version v0.0.2). Zenodo. <http://doi.org/10.5281/zenodo.1467431>
 
 Installation
 ------------
